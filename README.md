@@ -1,4 +1,4 @@
-Application Architecture and Database Interaction Course Solutions
+## Application Architecture and Database Interaction Course Solutions
 
 This repository contains my solutions and implementations for the assignments and projects covered in the "Application Architecture and Database Interaction" course. Throughout the course, I've focused on mastering various skills and techniques related to building robust applications and interacting with databases efficiently.
 
