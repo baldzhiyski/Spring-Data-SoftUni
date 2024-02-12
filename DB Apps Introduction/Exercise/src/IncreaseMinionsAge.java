@@ -21,15 +21,8 @@ public class IncreaseMinionsAge {
                 ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE );
         ResultSet resultSet = minionsStatement.executeQuery();
 
-        while (resultSet.next()){
-            final String minionNameLowerCase = resultSet.getString(Constants.VILLAIN_MINION_NAME).toLowerCase();
-            final int increasedAgeMinion = resultSet.getInt(Constants.VILLAIN_MINION_AGE) + 1;
+        updatingMinionInfo(resultSet);
 
-            resultSet.updateString(Constants.VILLAIN_MINION_NAME, minionNameLowerCase);
-            resultSet.updateInt(Constants.VILLAIN_MINION_AGE, increasedAgeMinion);
-
-            resultSet.updateRow();
-        }
         PreparedStatement allMinionsStatement = connection.prepareStatement(GET_ALL_MINIONS);
         ResultSet allMinions = allMinionsStatement.executeQuery();
 
@@ -41,6 +34,18 @@ public class IncreaseMinionsAge {
             System.out.printf(PRINT_FORMAT, minionId, minionName, minionAge);
         }
 
+    }
+
+    private static void updatingMinionInfo(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()){
+            final String minionNameLowerCase = resultSet.getString(Constants.VILLAIN_MINION_NAME).toLowerCase();
+            final int increasedAgeMinion = resultSet.getInt(Constants.VILLAIN_MINION_AGE) + 1;
+
+            resultSet.updateString(Constants.VILLAIN_MINION_NAME, minionNameLowerCase);
+            resultSet.updateInt(Constants.VILLAIN_MINION_AGE, increasedAgeMinion);
+
+            resultSet.updateRow();
+        }
     }
 
 }
