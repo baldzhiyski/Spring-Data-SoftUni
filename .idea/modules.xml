@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DB Apps Introduction/DB Apps Introduction.iml" filepath="$PROJECT_DIR$/DB Apps Introduction/DB Apps Introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DB Apps Introduction/Exercise/Exercise.iml" filepath="$PROJECT_DIR$/DB Apps Introduction/Exercise/Exercise.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring Data SoftUni.iml" filepath="$PROJECT_DIR$/Spring Data SoftUni.iml" />
     </modules>
   </component>
