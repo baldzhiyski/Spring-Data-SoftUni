@@ -11,6 +11,6 @@ public class Util {
         properties.setProperty(Constants.PASSWORD_KEY,Constants.PASSWORD_VALUE);
 
         return DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/minions_db",properties);
+                .getConnection(Constants.JDBC_MYSQL_URL,properties);
     }
 }
