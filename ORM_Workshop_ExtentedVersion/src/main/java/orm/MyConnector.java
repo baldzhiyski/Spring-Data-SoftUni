@@ -1,0 +1,5 @@
+package orm;
+
+enum  MyConnector {
+    ;
+}
