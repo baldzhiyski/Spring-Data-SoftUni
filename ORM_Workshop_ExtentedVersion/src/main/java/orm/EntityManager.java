@@ -27,6 +27,9 @@ public class EntityManager<E> implements DBContext<E> {
         this.connection = getConnection();
     }
 
+/**
+ * Insert the given entity into the database.
+ */
     @Override
     public boolean persist(E entity) throws IllegalAccessException, SQLException {
         final Field idColumn = getIdColumn(entity.getClass());
@@ -41,6 +44,17 @@ public class EntityManager<E> implements DBContext<E> {
         return doUpdate(entity, idColumn);
     }
 
+    /**
+     * Finds all entities of the specified table in the database.
+     *
+     * @param table the entity class representing the database table
+     * @return an Iterable containing all entities found
+     * @throws SQLException             if a database access error occurs
+     * @throws InvocationTargetException if the underlying method throws an exception
+     * @throws NoSuchMethodException     if the specified method does not exist
+     * @throws InstantiationException    if an instance of the specified class cannot be created
+     * @throws IllegalAccessException    if access to the entity's field is denied
+     */
     @Override
     public Iterable<E> find(Class<E> table) throws SQLException,
             InvocationTargetException,
@@ -55,7 +69,17 @@ public class EntityManager<E> implements DBContext<E> {
 
         return getPOJOs(findFirstStatement, table);
     }
-
+     /**
+      * Finds entities of the specified table in the database based on the given condition.
+      * @param table     the entity class representing the database table
+     * @param condition the condition to apply in the query
+     * @return an Iterable containing entities that satisfy the condition
+     * @throws SQLException             if a database access error occurs
+     * @throws InvocationTargetException if the underlying method throws an exception
+     * @throws NoSuchMethodException     if the specified method does not exist
+     * @throws InstantiationException    if an instance of the specified class cannot be created
+     * @throws IllegalAccessException    if access to the entity's field is denied
+      */
     @Override
     public Iterable<E> find(Class<E> table, String condition) throws SQLException,
             InvocationTargetException,
@@ -75,6 +99,18 @@ public class EntityManager<E> implements DBContext<E> {
 
     }
 
+
+    /**
+     * Finds the first entity of the specified table in the database.
+     *
+     * @param table the entity class representing the database table
+     * @return the first entity found
+     * @throws SQLException             if a database access error occurs
+     * @throws NoSuchMethodException     if the specified method does not exist
+     * @throws InvocationTargetException if the underlying method throws an exception
+     * @throws InstantiationException    if an instance of the specified class cannot be created
+     * @throws IllegalAccessException    if access to the entity's field is denied
+     */
     @Override
     public E findFirst(Class<E> table) throws SQLException,
             NoSuchMethodException,
@@ -89,6 +125,18 @@ public class EntityManager<E> implements DBContext<E> {
         return getPOJO(findFirstStatement, table);
     }
 
+    /**
+     * Finds the first entity of the specified table in the database based on the given condition.
+     *
+     * @param table     the entity class representing the database table
+     * @param condition the condition to apply in the query
+     * @return the first entity found that satisfies the condition
+     * @throws SQLException             if a database access error occurs
+     * @throws InvocationTargetException if the underlying method throws an exception
+     * @throws InstantiationException    if an instance of the specified class cannot be created
+     * @throws IllegalAccessException    if access to the entity's field is denied
+     * @throws NoSuchMethodException     if the specified method does not exist
+     */
     @Override
     public E findFirst(Class<E> table, String condition) throws SQLException,
             InvocationTargetException,
@@ -107,6 +155,12 @@ public class EntityManager<E> implements DBContext<E> {
         return getPOJO(findFirstStatement, table);
     }
 
+    /**
+     * Creates a new table in the database based on the specified entity class.
+     *
+     * @param entity the entity class representing the table structure
+     * @throws SQLException if a database access error occurs
+     */
     @Override
     public void doCreate(Class<E> entity) throws SQLException {
         final String tableName = getTableName(entity);
@@ -121,6 +175,12 @@ public class EntityManager<E> implements DBContext<E> {
                 .execute();
     }
 
+    /**
+     * Alters the existing table in the database to match the structure of the specified entity class.
+     *
+     * @param entity the entity class representing the desired table structure
+     * @throws SQLException if a database access error occurs
+     */
     @Override
     public void doAlter(Class<E> entity) throws SQLException {
         final String tableName = getTableName(entity);
@@ -133,6 +193,13 @@ public class EntityManager<E> implements DBContext<E> {
                 .executeUpdate();
     }
 
+    /**
+     * Deletes the specified entity from the database.
+     *
+     * @param entity the entity to delete
+     * @throws SQLException          if a database access error occurs
+     * @throws IllegalAccessException if access to the entity's field is denied
+     */
     @Override
     public void doDelete(E entity) throws SQLException, IllegalAccessException {
         final String tableName = getTableName(entity.getClass());
@@ -147,11 +214,27 @@ public class EntityManager<E> implements DBContext<E> {
                 .executeUpdate();
     }
 
+    /**
+     * Retrieves the value of a field from the provided entity object.
+     *
+     * @param entity the entity object
+     * @param field  the field whose value is to be retrieved
+     * @return the value of the field in the entity object
+     * @throws IllegalAccessException if access to the field is denied
+     */
     private Object getFieldValue(E entity, Field field) throws IllegalAccessException {
         field.setAccessible(true);
         return field.get(entity);
     }
 
+    /**
+     * Generates SQL statements to add columns for new fields in the entity class.
+     *
+     * @param entity    the entity class
+     * @param tableName the name of the database table
+     * @return SQL statements to add columns for new fields
+     * @throws SQLException if a database access error occurs
+     */
     private String addColumnsStatementForNewFields(Class<E> entity, String tableName) throws SQLException {
         final Set<String> sqlColumnNames = getSQLColumnNames(tableName);
         final List<Field> allFieldsWithoutId = getAllFieldsWithoutId(entity);
@@ -173,6 +256,13 @@ public class EntityManager<E> implements DBContext<E> {
         return String.join(COMMA_SEPARATOR, nonMatchingFields);
     }
 
+    /**
+     * Retrieves the names of all columns in the specified database table.
+     *
+     * @param tableName the name of the database table
+     * @return a set containing the names of all columns in the table
+     * @throws SQLException if a database access error occurs
+     */
     private Set<String> getSQLColumnNames(String tableName) throws SQLException {
         Set<String> allFields = new HashSet<>();
 
@@ -188,6 +278,12 @@ public class EntityManager<E> implements DBContext<E> {
         return allFields;
     }
 
+    /**
+     * Retrieves all fields and their corresponding data types in the entity class.
+     *
+     * @param entity the entity class
+     * @return a list of key-value pairs representing fields and their data types
+     */
     private List<EntityManager.KeyValuePair> getAllFieldsAndDataTypes(Class<E> entity) {
         return getAllFieldsWithoutId(entity)
                 .stream()
@@ -195,10 +291,22 @@ public class EntityManager<E> implements DBContext<E> {
                 .toList();
     }
 
+    /**
+     * Retrieves the SQL column name associated with the given field.
+     *
+     * @param field the field in the entity class
+     * @return the SQL column name
+     */
     private String getSQLColumnName(Field field) {
         return field.getAnnotationsByType(Column.class)[0].name();
     }
 
+    /**
+     * Retrieves the SQL data type corresponding to the given Java type.
+     *
+     * @param type the Java type
+     * @return the corresponding SQL data type
+     */
     private String getSQLType(Class<?> type) {
         if (type == Integer.class || type == int.class || type == long.class || type == Long.class) {
             return INT;
@@ -209,12 +317,25 @@ public class EntityManager<E> implements DBContext<E> {
         return VARCHAR;
     }
 
+    /**
+     * Retrieves all fields in the entity class except for the primary key field.
+     *
+     * @param entity the entity class
+     * @return a list of fields excluding the primary key
+     */
     private List<Field> getAllFieldsWithoutId(Class<E> entity) {
         return Arrays.stream(entity.getDeclaredFields())
                 .filter(f -> !f.isAnnotationPresent(Id.class) && f.isAnnotationPresent(Column.class))
                 .toList();
     }
 
+    /**
+     * Inserts a new entity into the database.
+     *
+     * @param entity the entity to insert
+     * @return true if the insertion was successful, false otherwise
+     * @throws SQLException if a database access error occurs
+     */
     private boolean doInsert(E entity) throws SQLException {
         final String tableName = getTableName(entity.getClass());
 
@@ -232,7 +353,15 @@ public class EntityManager<E> implements DBContext<E> {
 
         return connection.prepareStatement(insertQuery).execute();
     }
-
+    /**
+     * Updates an existing entity in the database.
+     *
+     * @param entity   the entity to update
+     * @param idColumn the primary key field of the entity
+     * @return true if the update was successful, false otherwise
+     * @throws SQLException          if a database access error occurs
+     * @throws IllegalAccessException if access to the entity's field is denied
+     */
     private boolean doUpdate(E entity, Field idColumn) throws SQLException, IllegalAccessException {
         final String tableName = getTableName(entity.getClass());
 
@@ -249,6 +378,19 @@ public class EntityManager<E> implements DBContext<E> {
         return connection.prepareStatement(insertQuery).execute();
     }
 
+
+    /**
+     * Retrieves a single entity object from the database result set.
+     *
+     * @param findFirstStatement the prepared statement for executing the query
+     * @param table              the entity class
+     * @return the entity object retrieved from the database
+     * @throws SQLException             if a database access error occurs
+     * @throws NoSuchMethodException     if the specified method does not exist
+     * @throws InvocationTargetException if the underlying method throws an exception
+     * @throws InstantiationException    if an instance of the specified class cannot be created
+     * @throws IllegalAccessException    if access to the entity's field is denied
+     */
     private E getPOJO(PreparedStatement findFirstStatement, Class<E> table) throws SQLException,
             NoSuchMethodException,
             InvocationTargetException,
@@ -265,6 +407,18 @@ public class EntityManager<E> implements DBContext<E> {
         return entity;
     }
 
+    /**
+     * Retrieves multiple entity objects from the database result set.
+     *
+     * @param findFirstStatement the prepared statement for executing the query
+     * @param table              the entity class
+     * @return a list of entity objects retrieved from the database
+     * @throws SQLException             if a database access error occurs
+     * @throws NoSuchMethodException     if the specified method does not exist
+     * @throws InvocationTargetException if the underlying method throws an exception
+     * @throws InstantiationException    if an instance of the specified class cannot be created
+     * @throws IllegalAccessException    if access to the entity's field is denied
+     */
     private Iterable<E> getPOJOs(PreparedStatement findFirstStatement, Class<E> table) throws SQLException,
             NoSuchMethodException,
             InvocationTargetException,
@@ -286,11 +440,25 @@ public class EntityManager<E> implements DBContext<E> {
         return entities;
     }
 
+    /**
+     * Fills the fields of an entity object with data from the database result set.
+     *
+     * @param table      the entity class
+     * @param resultSet  the result set containing the data
+     * @param entity     the entity object to fill
+     */
     private void fillEntity(Class<E> table, ResultSet resultSet, E entity) {
         Arrays.stream(table.getDeclaredFields())
                 .forEach(field -> fillFiled(field, resultSet, entity));
     }
 
+    /**
+     * Fills a specific field of an entity object with data from the database result set.
+     *
+     * @param field      the field to fill
+     * @param resultSet  the result set containing the data
+     * @param entity     the entity object to fill
+     */
     private void fillFiled(Field field, ResultSet resultSet, E entity) {
         final Class<?> type = field.getType();
         field.setAccessible(true);
@@ -311,6 +479,13 @@ public class EntityManager<E> implements DBContext<E> {
 
     }
 
+    /**
+     * Retrieves the primary key field of the specified class.
+     *
+     * @param clazz the class to inspect
+     * @return the primary key field
+     * @throws UnsupportedOperationException if the primary key field is missing
+     */
     private Field getIdColumn(Class<?> clazz) {
         return Arrays.stream(clazz.getDeclaredFields())
                 .filter(f -> f.isAnnotationPresent(Id.class))
@@ -318,6 +493,13 @@ public class EntityManager<E> implements DBContext<E> {
                 .orElseThrow(() -> new UnsupportedOperationException(ID_COLUM_MISSING_MESSAGE));
     }
 
+    /**
+     * Retrieves the name of the database table associated with the specified class.
+     *
+     * @param aClass the class representing the entity
+     * @return the name of the database table
+     * @throws UnsupportedOperationException if the class is not annotated as an entity
+     */
     private String getTableName(Class<?> aClass) {
         final Entity[] annotationsByType = aClass.getAnnotationsByType(Entity.class);
 
@@ -326,6 +508,12 @@ public class EntityManager<E> implements DBContext<E> {
         return annotationsByType[0].name();
     }
 
+    /**
+     * Retrieves key-value pairs representing the fields and their values in the entity object.
+     *
+     * @param entity the entity object
+     * @return a list of key-value pairs representing the fields and their values
+     */
     private List<EntityManager.KeyValuePair> getKeyValuePairs(E entity) {
         final Class<?> aClass = entity.getClass();
 
@@ -336,6 +524,13 @@ public class EntityManager<E> implements DBContext<E> {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Maps the value of a field to a string representation based on its type.
+     *
+     * @param field  the field to map
+     * @param entity the entity object containing the field
+     * @return a string representation of the field's value
+     */
     private String mapFieldsToGivenType(Field field, E entity) {
         field.setAccessible(true);
 

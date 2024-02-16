@@ -16,7 +16,7 @@ enum  MyConnector {
             "?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC";
 
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "123";
     private static final String DATABASE_NAME = "custom-orm-workshop";
 
     public static Connection getConnection() throws SQLException {
