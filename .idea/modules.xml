@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/DB Apps Introduction/Exercise/Exercise.iml" filepath="$PROJECT_DIR$/DB Apps Introduction/Exercise/Exercise.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring Data SoftUni.iml" filepath="$PROJECT_DIR$/Spring Data SoftUni.iml" />
       <module fileurl="file://$PROJECT_DIR$/hibernate_introduction.iml" filepath="$PROJECT_DIR$/hibernate_introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/introhibernate_ex.iml" filepath="$PROJECT_DIR$/introhibernate_ex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/introhibernate_ex_skeleton/introhibernate_ex_skeleton.iml" filepath="$PROJECT_DIR$/introhibernate_ex_skeleton/introhibernate_ex_skeleton.iml" />
     </modules>
   </component>
 </project>
