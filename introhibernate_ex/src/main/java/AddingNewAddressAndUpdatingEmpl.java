@@ -24,6 +24,7 @@ public class AddingNewAddressAndUpdatingEmpl {
 
         employees.forEach(e->e.setAddress(address));
 
+        entityManager.flush();
         entityManager.getTransaction().commit();
         entityManager.close();
     }
