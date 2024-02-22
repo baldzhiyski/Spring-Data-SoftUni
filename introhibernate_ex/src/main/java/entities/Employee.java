@@ -139,7 +139,7 @@ public class Employee {
     public void printSomeNames() {
         System.out.printf("%s %s - %s %n",firstName,lastName,jobTitle);
         System.out.println("Projects :");
-        getProjects().forEach(pr-> System.out.println(pr.getName()));
+        projects.stream().map(Project::getName).forEach(System.out::println);
     }
 
     public void printNameTitleSal() {
