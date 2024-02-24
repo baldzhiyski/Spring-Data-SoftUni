@@ -11,19 +11,28 @@ public class Main {
 
         entityManager.getTransaction().begin();
 
+
+        Company company = new Company("RyanAir");
+
         PlateNumber plateNumber = new PlateNumber("PB02310LP");
         Vehicle car = new Car("Corsa", BigDecimal.TEN,"Petrol",5,plateNumber);
         Vehicle bike = new Bike("BMX",BigDecimal.TWO,"None");
-        Vehicle plane = new Plane("Boeing",BigDecimal.ONE,"PlaneFuel",100);
+        Plane plane = new Plane("Boeing",BigDecimal.ONE,"PlaneFuel",100,company);
         Vehicle truck = new Truck("Scania",BigDecimal.ONE,"Diesel",40);
 
+
+        persistEntities(entityManager, company, plateNumber, car, bike, plane, truck);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    private static void persistEntities(EntityManager entityManager, Company company, PlateNumber plateNumber, Vehicle car, Vehicle bike, Plane plane, Vehicle truck) {
+        entityManager.persist(company);
         entityManager.persist(plateNumber);
         entityManager.persist(car);
         entityManager.persist(bike);
         entityManager.persist(plane);
         entityManager.persist(truck);
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
     }
 }

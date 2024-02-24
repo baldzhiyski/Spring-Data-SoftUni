@@ -15,9 +15,11 @@ public class Plane extends Vehicle{
     @ManyToOne
     private Company owner;
 
-    public Plane(String model, BigDecimal price, String fuelType, int passengerCapacity) {
+    public Plane(String model, BigDecimal price, String fuelType,
+                 int passengerCapacity,Company owner) {
         super(PLANE_TYPE, model, price, fuelType);
         this.passengerCapacity = passengerCapacity;
+        this.owner = owner;
     }
 
     public Plane() {

@@ -2,6 +2,9 @@ package inheritance.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "companies")
 public class Company {
@@ -11,7 +14,15 @@ public class Company {
 
     @Basic
     private String name;
+    @OneToMany(mappedBy = "owner")
+    private List<Plane> planes;
 
     public Company(){
+        this.planes = new ArrayList<>();
+    }
+
+    public Company(String name) {
+        this();
+        this.name = name;
     }
 }
