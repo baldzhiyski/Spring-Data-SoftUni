@@ -11,11 +11,13 @@ public class Main {
 
         entityManager.getTransaction().begin();
 
-        Vehicle car = new Car("Corsa", BigDecimal.TEN,"Petrol",5);
+        PlateNumber plateNumber = new PlateNumber("PB02310LP");
+        Vehicle car = new Car("Corsa", BigDecimal.TEN,"Petrol",5,plateNumber);
         Vehicle bike = new Bike("BMX",BigDecimal.TWO,"None");
         Vehicle plane = new Plane("Boeing",BigDecimal.ONE,"PlaneFuel",100);
         Vehicle truck = new Truck("Scania",BigDecimal.ONE,"Diesel",40);
 
+        entityManager.persist(plateNumber);
         entityManager.persist(car);
         entityManager.persist(bike);
         entityManager.persist(plane);
