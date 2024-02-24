@@ -2,6 +2,7 @@ package inheritance.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 import java.math.BigDecimal;
 
@@ -11,6 +12,8 @@ public class Plane extends Vehicle{
     @Column(name = "passenger_capacity")
     private int passengerCapacity;
 
+    @ManyToOne
+    private Company owner;
 
     public Plane(String model, BigDecimal price, String fuelType, int passengerCapacity) {
         super(PLANE_TYPE, model, price, fuelType);
