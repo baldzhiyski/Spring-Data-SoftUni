@@ -26,6 +26,10 @@ public class IncreaseSalaries {
         entityManager.getTransaction().commit();
         entityManager.close();
 
+        printResults(employees);
+    }
+
+    private static void printResults(List<Employee> employees) {
         employees.forEach(employee -> System.out.printf("%s %s ($%s)%n",
                 employee.getFirstName(),
                 employee.getLastName(),
