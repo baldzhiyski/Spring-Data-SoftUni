@@ -8,13 +8,7 @@ import java.math.BigDecimal;
 @Table(name = "vehicles")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_vehicle")
-public abstract class Vehicle {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Basic
-    private String type;
+public abstract class Vehicle extends IdType{
     @Basic
     private String module;
     @Basic
