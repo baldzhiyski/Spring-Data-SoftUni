@@ -15,8 +15,8 @@ public class Main {
         Company company = new Company("RyanAir");
 
         PlateNumber plateNumber = new PlateNumber("PB02310LP");
-        Vehicle car = new Car("Corsa", BigDecimal.TEN,"Petrol",5,plateNumber);
-        Vehicle bike = new Bike("BMX",BigDecimal.TWO,"None");
+        Car car = new Car("Corsa", BigDecimal.TEN,"Petrol",5,plateNumber);
+        Bike bike = new Bike("BMX",BigDecimal.TWO,"None");
         Plane plane = new Plane("Boeing",BigDecimal.ONE,"PlaneFuel",100,company);
         Vehicle truck = new Truck("Scania",BigDecimal.ONE,"Diesel",40);
 
