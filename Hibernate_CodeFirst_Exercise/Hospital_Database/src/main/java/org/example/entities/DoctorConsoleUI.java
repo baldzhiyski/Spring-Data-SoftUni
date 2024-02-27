@@ -9,6 +9,8 @@ public class DoctorConsoleUI {
     private Scanner scanner;
     private EntityManager entityManager;
 
+    private static final int DOCTOR_ID = 1;
+
     private static boolean IS_INITIALISED = false;
 
     private DoctorConsoleUI() {
@@ -79,6 +81,10 @@ public class DoctorConsoleUI {
 
         entityManager.getTransaction().begin();
 
+        Doctor doctor = entityManager.find(Doctor.class, DOCTOR_ID);
+
+        entityManager.getTransaction().begin();
+
         // Create a new Patient entity
         Patient patient = new Patient();
         patient.setFirstName(firstName);
@@ -86,8 +92,17 @@ public class DoctorConsoleUI {
         patient.setAddress(address);
         patient.setEmail(email);
         patient.setMedicalInsurance(hasMedicalInsurance);
-       
+        patient.setDoctor(doctor); // Set the Doctor for the Patient
+        // Set other attributes as needed...
+
+        // Persist the patient entity
         entityManager.persist(patient);
+
+        entityManager.getTransaction().commit();
+        System.out.println("Patient registered successfully!");
+
+        entityManager.persist(patient);
+
 
         entityManager.getTransaction().commit();
         System.out.println("Patient registered successfully!");

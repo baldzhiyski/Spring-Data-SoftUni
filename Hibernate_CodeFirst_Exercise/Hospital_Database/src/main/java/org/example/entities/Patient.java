@@ -65,4 +65,12 @@ public class Patient extends BaseEntity{
     public void setMedicalInsurance(Boolean medicalInsurance) {
         this.medicalInsurance = medicalInsurance;
     }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+
+    }
 }
