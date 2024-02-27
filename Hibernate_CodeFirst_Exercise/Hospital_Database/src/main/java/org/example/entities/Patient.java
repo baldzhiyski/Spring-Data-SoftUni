@@ -12,9 +12,9 @@ public class Patient extends BaseEntity{
     @Column(name = "last_name",length = 50,nullable = false)
     private String lastName;
 
-    @Column(length = 225,nullable = false)
+    @Column()
     private String address;
-    @Column(length = 50,nullable = false)
+    @Column()
     private String email;
     @Column(nullable = false)
     private Boolean medicalInsurance;

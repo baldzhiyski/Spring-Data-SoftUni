@@ -1,10 +1,10 @@
 package org.example;
 
-import jakarta.persistence.Persistence;
+import org.example.entities.DoctorConsoleUI;
 
 public class Main {
     public static void main(String[] args) {
-        Persistence.createEntityManagerFactory("hospital")
-                .createEntityManager();
+        DoctorConsoleUI doctorUI = DoctorConsoleUI.getDoctorConsole();
+        doctorUI.start();
     }
 }
