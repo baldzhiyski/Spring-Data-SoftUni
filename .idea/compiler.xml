@@ -16,12 +16,19 @@
         <module name="University_System" />
         <module name="FootBall_Betting_Database" />
         <module name="Hibernate_Code_First_Lab" />
+        <module name="SpringDataDemo" />
         <module name="Sales_Database" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Introduction_Hibernate" target="20" />
       <module name="ORM_Fundamentals" target="20" />
+      <module name="SpringBootDemo" target="20" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringDataDemo" options="-parameters" />
+    </option>
   </component>
 </project>
