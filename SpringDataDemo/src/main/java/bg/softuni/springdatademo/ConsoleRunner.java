@@ -5,6 +5,7 @@ import bg.softuni.springdatademo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -20,6 +21,7 @@ public class ConsoleRunner implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         accountService.depositMoney(BigDecimal.valueOf(200), 1L);
     }
