@@ -3,6 +3,7 @@ package bg.softuni.springdatademo.services;
 import bg.softuni.springdatademo.exceptions.EntityMissingException;
 import bg.softuni.springdatademo.models.Account;
 import bg.softuni.springdatademo.repositories.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class AccountServiceImpl implements AccountService{
     private final AccountRepository accountRepository;
 
+    @Autowired
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
