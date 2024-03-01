@@ -17,8 +17,7 @@ public class Country extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String name;
 
-    @OneToMany()
-    @JoinColumn(referencedColumnName = "id")
+    @OneToMany(mappedBy = "country")
     private Set<Town> towns;
 
 }

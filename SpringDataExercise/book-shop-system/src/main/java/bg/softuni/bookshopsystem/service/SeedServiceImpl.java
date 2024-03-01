@@ -41,9 +41,9 @@ public class SeedServiceImpl implements SeedService{
         this.authorService.seedAuthors(
                 Files.readAllLines(Path.of(RESOURCE_URL + AUTHORS_FILE_NAME))
                         .stream()
-                        .map(firstAndLastName -> new Author.Builder()
-                                .firstName(firstAndLastName.split(" ")[0])
-                                .lastName(firstAndLastName.split(" ")[1])
+                        .map(fullName -> new Author.Builder()
+                                .firstName(fullName.split(" ")[0])
+                                .lastName(fullName.split(" ")[1])
                                 .build())
                         .toList());
     }
