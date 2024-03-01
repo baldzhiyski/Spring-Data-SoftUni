@@ -14,6 +14,7 @@
         <module name="SpringDataDemo" />
         <module name="demo" />
         <module name="Sales_Database" />
+        <module name="user-system" />
         <module name="Bills_Payment_Database" />
         <module name="introhibernate_ex" />
         <module name="Gringotts_Database" />
@@ -35,6 +36,7 @@
       <module name="SpringDataExercise" options="-parameters" />
       <module name="book-shop-system" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="user-system" options="-parameters" />
     </option>
   </component>
 </project>

@@ -23,6 +23,7 @@
         <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/SpringDataExercise/pom.xml" />
         <option value="$PROJECT_DIR$/SpringDataExercise/book-shop-system/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringDataExercise/user-system/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

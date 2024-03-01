@@ -42,7 +42,8 @@ public class ConsoleRunner implements CommandLineRunner {
                     case 2:
                         printAllBooksByAuthorName();
                         break;
-
+                    case 3:
+                        printAllBooksWithReleaseDateBetween();
                     default:
                         return;
                 }
@@ -51,7 +52,23 @@ public class ConsoleRunner implements CommandLineRunner {
             }
         }
 
-        private void printAllBooksByAuthorName () {
+    private void printAllBooksWithReleaseDateBetween() {
+        System.out.println("Enter the date after :");
+        final LocalDate dateAfter = LocalDate.parse(this.scanner.nextLine());
+
+        System.out.println("Enter the date until :");
+        final LocalDate dateUntil = LocalDate.parse(this.scanner.nextLine());
+
+        String result = this.bookService.getAllBetweenTwoYears(dateAfter, dateUntil)
+                .stream()
+                .map(Book::getBookTitleAndPriceFormat)
+                .collect(Collectors.joining(", "));
+
+        System.out.println(result);
+
+    }
+
+    private void printAllBooksByAuthorName () {
             System.out.println("Enter Author full name");
             final String[] inputName = this.scanner.nextLine().split(" ");
 
