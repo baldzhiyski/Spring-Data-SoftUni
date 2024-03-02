@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Mini_ORM_Project" />
         <module name="hibernate_introduction" />
-        <module name="SpringDataExercise" />
         <module name="Hospital_Database" />
         <module name="ORM_Workshop_ExtentedVersion" />
         <module name="Hibernate_Code_First_Lab" />
@@ -33,6 +32,7 @@
       <module name="introhibernate_ex" target="9" />
       <module name="ORM_Fundamentals" target="20" />
       <module name="SpringBootDemo" target="20" />
+      <module name="SpringDataExercise" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
