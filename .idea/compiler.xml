@@ -16,7 +16,6 @@
         <module name="Sales_Database" />
         <module name="user-system" />
         <module name="Advanced_Query_Lab" />
-        <module name="advquerying" />
         <module name="Bills_Payment_Database" />
         <module name="introhibernate_ex" />
         <module name="Gringotts_Database" />
@@ -28,6 +27,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Advanced_Queries" target="17" />
+      <module name="advquerying" target="16" />
       <module name="Introduction_Hibernate" target="20" />
       <module name="introhibernate_ex" target="9" />
       <module name="ORM_Fundamentals" target="20" />

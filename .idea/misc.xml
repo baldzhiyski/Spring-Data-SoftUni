@@ -31,6 +31,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$USER_HOME$/Downloads/Lab_skeleton/pom.xml" />
         <option value="$PROJECT_DIR$/ORM_Fundamentals/pom.xml" />
       </set>
     </option>
