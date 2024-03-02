@@ -2,7 +2,6 @@ package bg.softuni.bookshopsystem.constants;
 
 public enum FilePath {
     ;
-    ;
     public static final String RESOURCE_URL = "C:\\Users\\user\\IdeaProjects\\Spring Data SoftUni\\SpringDataExercise\\book-shop-system\\src\\main\\resources\\dbContent\\";
 
     public static final String CATEGORY_FILE_NAME = "categories.txt";
