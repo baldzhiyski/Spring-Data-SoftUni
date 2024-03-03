@@ -15,4 +15,6 @@ public interface IngredientService {
 
     void updateAllPricesBy(BigDecimal price);
 
+    void updateAllPriceBy10PercentWithNameIn(List<String> names);
+
 }

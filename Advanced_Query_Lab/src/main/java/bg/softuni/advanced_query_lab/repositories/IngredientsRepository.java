@@ -24,4 +24,10 @@ public interface IngredientsRepository extends JpaRepository<Ingredient,Long> {
     @Query(value = "update Ingredient  i " +
             "set i.price = i.price * :price")
     void updateAllPrice(BigDecimal price);
+
+    @Modifying
+    @Query(value = "update Ingredient  i " +
+            "set i.price = i.price * 1.1" +
+            " where i.name in :names")
+    void updateAllPriceWhereNameIn(List<String> names);
 }

@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -25,7 +26,15 @@ public class ConsoleRunner implements CommandLineRunner {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        this.ingredientService.updateAllPricesBy(new BigDecimal(input));
+
+        List<String> names = new ArrayList<>();
+        while (!input.equals("Stop")){
+            names.add(input);
+
+            input=scanner.nextLine();
+        }
+
+        this.ingredientService.updateAllPriceBy10PercentWithNameIn(names);
 
     }
 }

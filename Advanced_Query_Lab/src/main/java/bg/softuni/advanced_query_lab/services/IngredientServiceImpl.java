@@ -39,4 +39,10 @@ public class IngredientServiceImpl implements IngredientService{
     public void updateAllPricesBy(BigDecimal price) {
         this.ingredientsRepository.updateAllPrice(price);
     }
+
+    @Override
+    @Transactional
+    public void updateAllPriceBy10PercentWithNameIn(List<String> names) {
+        this.ingredientsRepository.updateAllPriceWhereNameIn(names);
+    }
 }
