@@ -43,4 +43,9 @@ public class ShampooServiceImpl implements ShampooService{
     public int getNumberOfShampoosWithPriceLessThan(BigDecimal price) {
         return this.shampooRepository.countAllByPriceLessThan(price);
     }
+
+    @Override
+    public List<String> getAllShampoosWhereIngredientsNameIn(List<String> names) {
+        return this.shampooRepository.findAllByIngredientsNameIn(names).get();
+    }
 }
