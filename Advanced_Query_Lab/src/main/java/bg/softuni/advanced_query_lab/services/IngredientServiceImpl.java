@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -31,5 +32,11 @@ public class IngredientServiceImpl implements IngredientService{
     @Transactional
     public void deleteAllByGivenName(String name) {
         this.ingredientsRepository.deleteAllByName(name);
+    }
+
+    @Override
+    @Transactional
+    public void updateAllPricesBy(BigDecimal price) {
+        this.ingredientsRepository.updateAllPrice(price);
     }
 }

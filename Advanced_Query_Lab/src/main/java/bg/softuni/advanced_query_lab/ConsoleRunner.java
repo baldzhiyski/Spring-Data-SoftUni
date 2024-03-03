@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 @Component
@@ -22,9 +23,9 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        int count = scanner.nextInt();
+        String input = scanner.nextLine();
 
-        this.shampooService.getAllShampoosNamesWhereIngredientsCountIs(count)
-                .forEach(System.out::println);
+        this.ingredientService.updateAllPricesBy(new BigDecimal(input));
+
     }
 }
