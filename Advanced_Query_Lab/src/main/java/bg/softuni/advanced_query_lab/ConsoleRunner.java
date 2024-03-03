@@ -21,8 +21,9 @@ public class ConsoleRunner implements CommandLineRunner {
         Scanner scanner = new Scanner(System.in);
 
         String input = scanner.nextLine();
+        long id = scanner.nextLong();
 
-        this.shampooService.getAllShampoosBySize(input)
+        this.shampooService.getAllShampoosBySizeOrLabel(input,id)
                 .forEach(System.out::println);
 
     }

@@ -12,4 +12,6 @@ import java.util.Optional;
 public interface ShampooRepository extends JpaRepository<Shampoo,Long> {
 
     Optional<List<Shampoo>> findAllBySizeOrderById(Size size);
+
+    Optional<List<Shampoo>> findAllBySizeOrLabelIdOrderByPrice(Size size, long labelId);
 }

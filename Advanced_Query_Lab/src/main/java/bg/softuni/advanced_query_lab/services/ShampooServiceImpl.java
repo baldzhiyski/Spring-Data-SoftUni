@@ -24,4 +24,12 @@ public class ShampooServiceImpl implements ShampooService{
         Size parsedSize = Size.valueOf(size.toUpperCase());
         return this.shampooRepository.findAllBySizeOrderById(parsedSize).get();
     }
+
+    @Override
+    public List<Shampoo> getAllShampoosBySizeOrLabel(String size, long labelId) {
+        Size parsedSize = Size.valueOf(size.toUpperCase());
+
+        return  this.shampooRepository.findAllBySizeOrLabelIdOrderByPrice(parsedSize,labelId).get();
+
+    }
 }

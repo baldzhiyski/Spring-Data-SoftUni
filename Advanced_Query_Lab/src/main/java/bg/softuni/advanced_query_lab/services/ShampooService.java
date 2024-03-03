@@ -7,4 +7,6 @@ import java.util.List;
 public interface ShampooService {
 
     List<Shampoo> getAllShampoosBySize(String size);
+
+    List<Shampoo> getAllShampoosBySizeOrLabel(String size,long labelId);
 }
