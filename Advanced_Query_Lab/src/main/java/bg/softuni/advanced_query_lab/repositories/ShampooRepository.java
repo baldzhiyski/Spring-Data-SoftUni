@@ -17,4 +17,6 @@ public interface ShampooRepository extends JpaRepository<Shampoo,Long> {
     Optional<List<Shampoo>> findAllBySizeOrLabelIdOrderByPrice(Size size, long labelId);
 
     Optional<List<Shampoo>> findAllByPriceGreaterThanOrderByPriceDesc(BigDecimal price);
+
+    int countAllByPriceLessThan(BigDecimal price);
 }
