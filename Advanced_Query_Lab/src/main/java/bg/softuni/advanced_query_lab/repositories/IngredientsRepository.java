@@ -13,4 +13,7 @@ public interface IngredientsRepository extends JpaRepository<Ingredient,Long> {
     Optional<List<Ingredient>> findAllByNameStartingWith(String name);
 
     Optional<List<Ingredient>> findAllByNameIn(List<String> names);
+
+
+    void deleteAllByName(String name);
 }

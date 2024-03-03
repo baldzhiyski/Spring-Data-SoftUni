@@ -4,6 +4,7 @@ import bg.softuni.advanced_query_lab.entities.Ingredient;
 import bg.softuni.advanced_query_lab.repositories.IngredientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,5 +25,11 @@ public class IngredientServiceImpl implements IngredientService{
     @Override
     public List<Ingredient> getAllIngredientsWithNameIn(List<String> names) {
         return this.ingredientsRepository.findAllByNameIn(names).get();
+    }
+
+    @Override
+    @Transactional
+    public void deleteAllByGivenName(String name) {
+        this.ingredientsRepository.deleteAllByName(name);
     }
 }

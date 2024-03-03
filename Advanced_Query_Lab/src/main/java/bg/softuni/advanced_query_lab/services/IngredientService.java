@@ -10,4 +10,6 @@ public interface IngredientService {
 
     List<Ingredient> getAllIngredientsWithNameIn(List<String> names);
 
+    void deleteAllByGivenName(String name);
+
 }
