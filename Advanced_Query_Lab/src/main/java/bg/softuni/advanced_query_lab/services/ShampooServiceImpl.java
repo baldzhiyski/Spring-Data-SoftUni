@@ -6,6 +6,7 @@ import bg.softuni.advanced_query_lab.repositories.ShampooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -31,5 +32,10 @@ public class ShampooServiceImpl implements ShampooService{
 
         return  this.shampooRepository.findAllBySizeOrLabelIdOrderByPrice(parsedSize,labelId).get();
 
+    }
+
+    @Override
+    public List<Shampoo> getAllShampoosWithGreaterPriceThan(BigDecimal price) {
+        return this.shampooRepository.findAllByPriceGreaterThanOrderByPriceDesc(price).get();
     }
 }
