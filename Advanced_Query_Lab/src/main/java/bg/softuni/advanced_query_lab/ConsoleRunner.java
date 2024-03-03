@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -22,10 +24,15 @@ public class ConsoleRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
 
-        String firstLetter = scanner.nextLine();
+        List<String> names = new ArrayList<>();
+        while (!input.equals("Stop")){
+            names.add(input);
+            input=scanner.nextLine();
+        }
 
-        this.ingredientService.getAllIngredientsByGivenFirstLetter(firstLetter)
+        this.ingredientService.getAllIngredientsWithNameIn(names)
                 .forEach(System.out::println);
 
     }

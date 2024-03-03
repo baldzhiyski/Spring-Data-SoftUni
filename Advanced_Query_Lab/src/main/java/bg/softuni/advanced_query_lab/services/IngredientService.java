@@ -8,4 +8,6 @@ public interface IngredientService {
 
     List<Ingredient> getAllIngredientsByGivenFirstLetter(String givenName);
 
+    List<Ingredient> getAllIngredientsWithNameIn(List<String> names);
+
 }

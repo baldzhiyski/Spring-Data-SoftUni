@@ -20,4 +20,9 @@ public class IngredientServiceImpl implements IngredientService{
     public List<Ingredient> getAllIngredientsByGivenFirstLetter(String givenName) {
         return this.ingredientsRepository.findAllByNameStartingWith(givenName).get();
     }
+
+    @Override
+    public List<Ingredient> getAllIngredientsWithNameIn(List<String> names) {
+        return this.ingredientsRepository.findAllByNameIn(names).get();
+    }
 }
