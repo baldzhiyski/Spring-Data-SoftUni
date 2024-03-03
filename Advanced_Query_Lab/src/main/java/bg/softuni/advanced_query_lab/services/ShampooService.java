@@ -16,4 +16,8 @@ public interface ShampooService {
     int getNumberOfShampoosWithPriceLessThan(BigDecimal price);
 
     List<String> getAllShampoosWhereIngredientsNameIn(List<String> names);
+
+    List<Shampoo> getAllShampoosNamesWhereIngredientsCountIs(int count);
+
+
 }

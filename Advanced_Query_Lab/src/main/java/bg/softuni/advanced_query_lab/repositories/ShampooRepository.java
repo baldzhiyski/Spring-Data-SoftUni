@@ -23,4 +23,8 @@ public interface ShampooRepository extends JpaRepository<Shampoo,Long> {
 
     @Query(value = "select distinct s.brand from Shampoo as s join s.ingredients as  i where  i.name in :names")
     Optional<List<String>> findAllByIngredientsNameIn(List<String> names);
+
+    @Query(value =  "select  s from Shampoo as s " +
+            "JOIN s.ingredients i WHERE SIZE(s.ingredients) < :count")
+    Optional<List<Shampoo>> findAllBrandsByIngredientsCount(int count);
 }

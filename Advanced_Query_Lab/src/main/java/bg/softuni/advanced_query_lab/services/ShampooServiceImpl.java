@@ -48,4 +48,9 @@ public class ShampooServiceImpl implements ShampooService{
     public List<String> getAllShampoosWhereIngredientsNameIn(List<String> names) {
         return this.shampooRepository.findAllByIngredientsNameIn(names).get();
     }
+
+    @Override
+    public List<Shampoo> getAllShampoosNamesWhereIngredientsCountIs(int count) {
+        return this.shampooRepository.findAllBrandsByIngredientsCount(count).get();
+    }
 }
