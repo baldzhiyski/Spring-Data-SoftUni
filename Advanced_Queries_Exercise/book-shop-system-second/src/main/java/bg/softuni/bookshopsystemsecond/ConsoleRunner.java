@@ -1,5 +1,6 @@
 package bg.softuni.bookshopsystemsecond;
 
+import bg.softuni.bookshopsystemsecond.domain.entities.Author;
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
 import bg.softuni.bookshopsystemsecond.service.AuthorService;
 import bg.softuni.bookshopsystemsecond.service.BookService;
@@ -32,9 +33,15 @@ public class ConsoleRunner implements CommandLineRunner {
         public void run (String...args) throws Exception {
             String input = scanner.nextLine();
 
-            printAllBooksWhereYearOfReleaseNot(input);
+            printAllAuthorsWithFirstNameEndingWith(input);
 
         }
+
+    private void printAllAuthorsWithFirstNameEndingWith(String input) {
+        this.authorService.getAllByFirstNameEndingWith(input)
+                .stream().map(Author::getAuthorFullName)
+                .forEach(System.out::println);
+    }
 
     private void printAllBooksWhereYearOfReleaseNot(String yearOfRel) {
         this.bookService.getAllBooksByYearOfReleaseDateNot(Integer.parseInt(yearOfRel))
