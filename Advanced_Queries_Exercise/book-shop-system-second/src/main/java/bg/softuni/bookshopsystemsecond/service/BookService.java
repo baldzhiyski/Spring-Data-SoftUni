@@ -1,6 +1,7 @@
 package bg.softuni.bookshopsystemsecond.service;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
+import bg.softuni.bookshopsystemsecond.domain.entities.enums.EditionType;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -21,5 +22,7 @@ public interface BookService {
     Integer getAllByTitleLengthGreaterThan(Integer length);
 
     List<Book> getAllByAgeRestriction(String restriction);
+
+    List<Book> getAllByGoldenEditionTypeAndCopiesNumber(String editionType , Integer copies);
 
 }

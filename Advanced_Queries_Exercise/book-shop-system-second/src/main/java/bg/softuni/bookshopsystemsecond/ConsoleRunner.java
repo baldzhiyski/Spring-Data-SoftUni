@@ -30,9 +30,15 @@ public class ConsoleRunner implements CommandLineRunner {
         public void run (String...args) throws Exception {
             String input = scanner.nextLine();
 
-            printBooksTitleWithGivenAgeRestriction(input);
 
         }
+
+    private void printAllBookTitleByGoldEditionAndLessThan5000Copies() {
+        this.bookService.getAllByGoldenEditionTypeAndCopiesNumber("gold",5000)
+                .stream()
+                .map(Book::getTitle)
+                .forEach(System.out::println);
+    }
 
     private void printBooksTitleWithGivenAgeRestriction(String input) {
         this.bookService.getAllByAgeRestriction(input)
