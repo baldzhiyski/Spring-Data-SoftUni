@@ -31,11 +31,14 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
-            String input = scanner.nextLine();
-
-            System.out.println(this.bookService.getCountOfBooksWithTitlesLengthMoreThan(Integer.parseInt(input)));
+//            String input = scanner.nextLine();
 
         }
+
+    private void printAuthorFullNameWithFullAmountCopiesOfBooks() {
+        this.authorService.getInfoAboutAuthorsAndTheirCopies()
+                .forEach(System.out::println);
+    }
 
     private void printBooksTitlesWithAuthorLastNameStartsWith(String prefixForLastNameOfAuthor) {
         this.bookService.getAllByAuthorLastNameStartsWith(prefixForLastNameOfAuthor)

@@ -19,4 +19,7 @@ public interface AuthorRepository  extends JpaRepository<Author,Long> {
     List<Author> findAllDistinctOrderByBooks();
 
     List<Author> findAllByFirstNameEndingWith(String suffix);
+
+    @Query("select concat_ws(' ',a.firstName,a.lastName,' - ',sum(b.copies)) from Author a join a.books as b group by a.id")
+    List<String> findAuthorsCopiesCountForEveryBook();
 }

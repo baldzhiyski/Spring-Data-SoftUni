@@ -61,4 +61,9 @@ public class AuthorServiceImpl implements AuthorService{
         return this.authorRepository
                 .findAllByFirstNameEndingWith(suffix);
     }
+
+    @Override
+    public List<String> getInfoAboutAuthorsAndTheirCopies() {
+        return this.authorRepository.findAuthorsCopiesCountForEveryBook();
+    }
 }

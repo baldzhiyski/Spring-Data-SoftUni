@@ -15,4 +15,6 @@ public interface AuthorService {
     List<Author> getAllAuthorsOrderByBooksDesc();
 
     List<Author> getAllByFirstNameEndingWith(String suffix);
+
+    List<String> getInfoAboutAuthorsAndTheirCopies();
 }
