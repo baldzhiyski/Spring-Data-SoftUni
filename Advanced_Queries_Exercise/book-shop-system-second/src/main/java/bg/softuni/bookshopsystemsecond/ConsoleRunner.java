@@ -1,5 +1,6 @@
 package bg.softuni.bookshopsystemsecond;
 
+import bg.softuni.bookshopsystemsecond.domain.entities.Book;
 import bg.softuni.bookshopsystemsecond.service.AuthorService;
 import bg.softuni.bookshopsystemsecond.service.BookService;
 import bg.softuni.bookshopsystemsecond.service.SeedService;
@@ -27,7 +28,15 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
+            String input = scanner.nextLine();
 
+            printBooksTitleWithGivenAgeRestriction(input);
 
         }
+
+    private void printBooksTitleWithGivenAgeRestriction(String input) {
+        this.bookService.getAllByAgeRestriction(input)
+                .stream().map(Book::getTitle)
+                .forEach(System.out::println);
+    }
 }

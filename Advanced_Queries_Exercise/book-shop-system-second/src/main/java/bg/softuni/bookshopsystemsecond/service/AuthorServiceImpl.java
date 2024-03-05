@@ -1,12 +1,10 @@
 package bg.softuni.bookshopsystemsecond.service;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Author;
-import bg.softuni.bookshopsystemsecond.domain.entities.Book;
 import bg.softuni.bookshopsystemsecond.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -45,19 +43,6 @@ public class AuthorServiceImpl implements AuthorService{
         throw new RuntimeException();
     }
 
-    @Override
-    public List<Author> getAllAuthorsWithBooksBeforeYear(LocalDate date) {
-        final List<Author> authors = this.bookService.getAllBooksBeforeYear(date)
-                .stream()
-                .map(Book::getAuthor)
-                .toList();
-
-        System.out.println(authors.stream()
-                .map(Author::getAuthorFullName)
-                .collect(Collectors.joining("\n")));
-
-        return authors;
-    }
 
     @Override
     public List<Author> getAllAuthorsOrderByBooksDesc() {

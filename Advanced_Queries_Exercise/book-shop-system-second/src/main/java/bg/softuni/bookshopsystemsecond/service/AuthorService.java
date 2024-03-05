@@ -2,7 +2,6 @@ package bg.softuni.bookshopsystemsecond.service;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Author;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface AuthorService {
@@ -12,7 +11,6 @@ public interface AuthorService {
 
     Author getRandomAuthor();
 
-    List<Author> getAllAuthorsWithBooksBeforeYear(LocalDate date);
 
     List<Author> getAllAuthorsOrderByBooksDesc();
 

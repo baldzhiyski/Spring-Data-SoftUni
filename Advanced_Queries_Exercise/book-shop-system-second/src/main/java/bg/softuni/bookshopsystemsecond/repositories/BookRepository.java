@@ -1,6 +1,7 @@
 package bg.softuni.bookshopsystemsecond.repositories;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
+import bg.softuni.bookshopsystemsecond.domain.entities.enums.AgeRestriction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,8 @@ public interface BookRepository  extends JpaRepository<Book,Long> {
 
     @Query("Select count(b) from Book b where length(b.title)  > :length")
     Integer findAllByTitleLengthGreaterThan(Integer length);
+
+    Optional<List<Book>> findAllByAgeRestriction(AgeRestriction ageRestriction);
 
 
 

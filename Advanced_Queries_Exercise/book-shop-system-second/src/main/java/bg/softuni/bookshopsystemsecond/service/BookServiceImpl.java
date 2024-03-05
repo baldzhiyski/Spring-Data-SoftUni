@@ -1,12 +1,14 @@
 package bg.softuni.bookshopsystemsecond.service;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
+import bg.softuni.bookshopsystemsecond.domain.entities.enums.AgeRestriction;
 import bg.softuni.bookshopsystemsecond.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -53,6 +55,13 @@ public class BookServiceImpl implements BookService{
         System.out.println(count);
 
         return count;
+    }
+
+    @Override
+    public List<Book> getAllByAgeRestriction(String restriction) {
+        AgeRestriction ageRestriction = AgeRestriction.valueOf(restriction.toUpperCase());
+        return  this.bookRepository.findAllByAgeRestriction(ageRestriction)
+                .orElseThrow(NoSuchElementException::new);
     }
 
 

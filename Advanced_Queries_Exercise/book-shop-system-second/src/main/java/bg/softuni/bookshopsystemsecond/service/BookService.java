@@ -20,4 +20,6 @@ public interface BookService {
 
     Integer getAllByTitleLengthGreaterThan(Integer length);
 
+    List<Book> getAllByAgeRestriction(String restriction);
+
 }
