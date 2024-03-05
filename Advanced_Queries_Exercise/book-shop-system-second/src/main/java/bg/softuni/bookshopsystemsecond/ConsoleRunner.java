@@ -31,10 +31,15 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
-            String inputDate = scanner.nextLine();
+            seedService.seedAllData();
+            String input = scanner.nextLine();
 
 
         }
+
+    private void printInfoBooksForAuthorByGivenName(String fullName) {
+        System.out.printf("%s has written %d books.%n", fullName,this.bookService.getBooksCountByAuthorName(fullName));
+    }
 
     private void printTotalAmountCopiesAdded(String inputDate, int amount) {
         System.out.println(this.bookService.updateBooksCopiesWhereReleaseDateAfter(inputDate, amount) * amount);

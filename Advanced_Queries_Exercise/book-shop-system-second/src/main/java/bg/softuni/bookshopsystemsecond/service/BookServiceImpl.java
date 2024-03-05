@@ -123,5 +123,14 @@ public class BookServiceImpl implements BookService{
         return this.bookRepository.deleteAllByCopiesLessThan(number);
     }
 
+    @Override
+    public int getBooksCountByAuthorName(String fullName) {
+        String[] names = fullName.split("\\s+", 2); // Limit split to 2 parts
+        if (names.length < 2) {
+            throw new IllegalArgumentException("Full name must contain both first name and last name");
+        }
+        return this.bookRepository.getBooksCountByAuthorFirstNameAndAuthorLastName(names[0],names[1]);
+    }
+
 
 }

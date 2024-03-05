@@ -43,4 +43,6 @@ public interface BookService {
 
     int deleteBooksByCopiesLessThan(int number);
 
+    int getBooksCountByAuthorName(String fullName);
+
 }

@@ -57,5 +57,6 @@ public interface BookRepository  extends JpaRepository<Book,Long> {
 
     int deleteAllByCopiesLessThan(int number);
 
-
+    @Query(nativeQuery=true, value="call usp_get_book_written_by(:firstName,:lastName)")
+    int getBooksCountByAuthorFirstNameAndAuthorLastName(String firstName,String lastName);
 }
