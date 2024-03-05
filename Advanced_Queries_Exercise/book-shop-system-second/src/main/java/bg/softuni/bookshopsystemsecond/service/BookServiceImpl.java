@@ -118,5 +118,10 @@ public class BookServiceImpl implements BookService{
         return this.bookRepository.increaseBooksCopiesReleasedAfter(parsedDate,amount);
     }
 
+    @Override
+    public int deleteBooksByCopiesLessThan(int number) {
+        return this.bookRepository.deleteAllByCopiesLessThan(number);
+    }
+
 
 }

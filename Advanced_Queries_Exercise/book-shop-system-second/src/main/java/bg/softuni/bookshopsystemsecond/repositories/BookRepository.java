@@ -55,6 +55,7 @@ public interface BookRepository  extends JpaRepository<Book,Long> {
     int  increaseBooksCopiesReleasedAfter(LocalDate date,int amountToIncreaseWith);
 
 
+    int deleteAllByCopiesLessThan(int number);
 
 
 }

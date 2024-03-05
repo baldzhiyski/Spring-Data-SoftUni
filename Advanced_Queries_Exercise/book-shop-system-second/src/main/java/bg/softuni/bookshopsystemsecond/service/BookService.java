@@ -41,4 +41,6 @@ public interface BookService {
 
     int updateBooksCopiesWhereReleaseDateAfter(String inputDate, int amount );
 
+    int deleteBooksByCopiesLessThan(int number);
+
 }
