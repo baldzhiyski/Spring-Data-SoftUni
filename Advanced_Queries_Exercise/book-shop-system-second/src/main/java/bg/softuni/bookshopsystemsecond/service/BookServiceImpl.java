@@ -95,5 +95,11 @@ public class BookServiceImpl implements BookService{
                 .orElseThrow();
     }
 
+    @Override
+    public List<Book> getAllWithTitleContains(String word) {
+        return this.bookRepository.findAllByTitleContainingIgnoreCase(word)
+                .orElseThrow();
+    }
+
 
 }

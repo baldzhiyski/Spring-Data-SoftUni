@@ -32,4 +32,6 @@ public interface BookService {
 
     List<Book> getAllBooksByYearOfReleaseDateNot(int year);
 
+    List<Book> getAllWithTitleContains(String word);
+
 }
