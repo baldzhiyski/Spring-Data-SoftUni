@@ -5,8 +5,10 @@ import bg.softuni.bookshopsystemsecond.domain.entities.enums.AgeRestriction;
 import bg.softuni.bookshopsystemsecond.domain.entities.enums.EditionType;
 import bg.softuni.bookshopsystemsecond.domain.entities.model.BookPrintInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -44,6 +46,13 @@ public interface BookRepository  extends JpaRepository<Book,Long> {
     @Query(value = "select new bg.softuni.bookshopsystemsecond.domain.entities.model.BookPrintInfo(b.title," +
             "b.editionType,b.ageRestriction,b.price) from Book b  where b.title = :title")
     Optional<BookPrintInfo> findInfoByGivenTitle(String title);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update Book  b" +
+            " set b.copies = b.copies + :amountToIncreaseWith " +
+            "where b.releaseDate > :date")
+    int  increaseBooksCopiesReleasedAfter(LocalDate date,int amountToIncreaseWith);
 
 
 

@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 
 @Service
@@ -108,6 +109,13 @@ public class BookServiceImpl implements BookService{
     public BookPrintInfo getNeededInfoForGivenNameOfBook(String title) {
         return this.bookRepository.findInfoByGivenTitle(title)
                 .orElseThrow();
+    }
+
+    @Override
+    public int updateBooksCopiesWhereReleaseDateAfter(String inputDate, int amount) {
+        LocalDate parsedDate = LocalDate.parse(inputDate,DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH));
+
+        return this.bookRepository.increaseBooksCopiesReleasedAfter(parsedDate,amount);
     }
 
 

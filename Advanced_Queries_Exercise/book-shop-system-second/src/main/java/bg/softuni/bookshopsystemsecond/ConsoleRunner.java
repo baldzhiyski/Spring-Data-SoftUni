@@ -31,9 +31,14 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
-            String input = scanner.nextLine();
+            String inputDate = scanner.nextLine();
+          
 
         }
+
+    private void printTotalAmountCopiesAdded(String inputDate, int amount) {
+        System.out.println(this.bookService.updateBooksCopiesWhereReleaseDateAfter(inputDate, amount) * amount);
+    }
 
     private void printInfoAboutBook(String bookTitle) {
         System.out.println(this.bookService.getNeededInfoForGivenNameOfBook(bookTitle));

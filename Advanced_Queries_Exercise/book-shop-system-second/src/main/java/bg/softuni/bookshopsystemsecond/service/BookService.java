@@ -39,4 +39,6 @@ public interface BookService {
 
     BookPrintInfo getNeededInfoForGivenNameOfBook(String title);
 
+    int updateBooksCopiesWhereReleaseDateAfter(String inputDate, int amount );
+
 }
