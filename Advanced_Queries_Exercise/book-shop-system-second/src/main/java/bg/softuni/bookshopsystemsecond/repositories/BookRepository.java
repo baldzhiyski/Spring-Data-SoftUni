@@ -3,6 +3,7 @@ package bg.softuni.bookshopsystemsecond.repositories;
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
 import bg.softuni.bookshopsystemsecond.domain.entities.enums.AgeRestriction;
 import bg.softuni.bookshopsystemsecond.domain.entities.enums.EditionType;
+import bg.softuni.bookshopsystemsecond.domain.entities.model.BookPrintInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -40,6 +41,9 @@ public interface BookRepository  extends JpaRepository<Book,Long> {
     @Query(value = "select count(b) from  Book  b where length( b.title) > :number")
     Integer  countAllByTitleGreaterThan(int number);
 
+    @Query(value = "select new bg.softuni.bookshopsystemsecond.domain.entities.model.BookPrintInfo(b.title," +
+            "b.editionType,b.ageRestriction,b.price) from Book b  where b.title = :title")
+    Optional<BookPrintInfo> findInfoByGivenTitle(String title);
 
 
 

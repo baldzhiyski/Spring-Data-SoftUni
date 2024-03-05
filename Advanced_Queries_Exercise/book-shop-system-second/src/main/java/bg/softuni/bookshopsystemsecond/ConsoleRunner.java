@@ -31,8 +31,9 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
-//            String input = scanner.nextLine();
+            String input = scanner.nextLine();
 
+            System.out.println(this.bookService.getNeededInfoForGivenNameOfBook(input));
         }
 
     private void printAuthorFullNameWithFullAmountCopiesOfBooks() {

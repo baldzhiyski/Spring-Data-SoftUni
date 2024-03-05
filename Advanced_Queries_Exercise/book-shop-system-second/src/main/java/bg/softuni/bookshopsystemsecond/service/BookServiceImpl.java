@@ -3,6 +3,7 @@ package bg.softuni.bookshopsystemsecond.service;
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
 import bg.softuni.bookshopsystemsecond.domain.entities.enums.AgeRestriction;
 import bg.softuni.bookshopsystemsecond.domain.entities.enums.EditionType;
+import bg.softuni.bookshopsystemsecond.domain.entities.model.BookPrintInfo;
 import bg.softuni.bookshopsystemsecond.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -101,6 +102,12 @@ public class BookServiceImpl implements BookService{
     @Override
     public Integer getCountOfBooksWithTitlesLengthMoreThan(int number) {
         return this.bookRepository.countAllByTitleGreaterThan(number);
+    }
+
+    @Override
+    public BookPrintInfo getNeededInfoForGivenNameOfBook(String title) {
+        return this.bookRepository.findInfoByGivenTitle(title)
+                .orElseThrow();
     }
 
 

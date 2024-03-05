@@ -1,6 +1,7 @@
 package bg.softuni.bookshopsystemsecond.service;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
+import bg.softuni.bookshopsystemsecond.domain.entities.model.BookPrintInfo;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -35,5 +36,7 @@ public interface BookService {
     List<Book> getAllWithTitleContains(String word);
 
     Integer getCountOfBooksWithTitlesLengthMoreThan(int number);
+
+    BookPrintInfo getNeededInfoForGivenNameOfBook(String title);
 
 }
