@@ -1,0 +1,26 @@
+package bg.softuni.bookshopsystemsecond.repositories;
+
+import bg.softuni.bookshopsystemsecond.domain.entities.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface BookRepository  extends JpaRepository<Book,Long> {
+
+    Optional<List<Book>> findAllByReleaseDateAfter(LocalDate date);
+
+    Optional<List<Book>> findAllByAuthorFirstNameAndAuthorLastNameOrderByReleaseDateDescTitleAsc(String firstName, String lastName);
+
+    Optional<List<Book>> findAllByAuthorLastNameStartsWith(String prefix);
+
+    @Query("Select count(b) from Book b where length(b.title)  > :length")
+    Integer findAllByTitleLengthGreaterThan(Integer length);
+
+
+
+}

@@ -1,0 +1,33 @@
+package bg.softuni.bookshopsystemsecond;
+
+import bg.softuni.bookshopsystemsecond.service.AuthorService;
+import bg.softuni.bookshopsystemsecond.service.BookService;
+import bg.softuni.bookshopsystemsecond.service.SeedService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
+
+@Component
+public class ConsoleRunner implements CommandLineRunner {
+        private final SeedService seedService;
+        private final BookService bookService;
+        private final AuthorService authorService;
+        private final Scanner scanner;
+
+    @Autowired
+    public ConsoleRunner(SeedService seedService, BookService bookService, AuthorService authorService) {
+            this.seedService = seedService;
+            this.bookService = bookService;
+            this.authorService = authorService;
+            this.scanner = new Scanner(System.in);
+        }
+
+
+        @Override
+        public void run (String...args) throws Exception {
+
+
+        }
+}

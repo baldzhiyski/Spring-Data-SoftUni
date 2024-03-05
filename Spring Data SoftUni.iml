@@ -6,6 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/Advanced_Queries/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Advanced_Queries/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Advanced_Query_Exercise/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Advanced_Query_Exercise/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/Advanced_Query_Exercise/src/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -27,11 +27,15 @@
         <option value="$USER_HOME$/Downloads/Lab_skeleton/pom.xml" />
         <option value="$PROJECT_DIR$/demo1/pom.xml" />
         <option value="$PROJECT_DIR$/Advanced_Query_Lab/pom.xml" />
+        <option value="$USER_HOME$/Downloads/Ex_skeleton/pom.xml" />
+        <option value="$PROJECT_DIR$/Advanced_Querries_Exercise/pom.xml" />
+        <option value="$PROJECT_DIR$/Advanced_Queries_Exercise/book-shop-system-second/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$USER_HOME$/Downloads/Lab_skeleton/pom.xml" />
+        <option value="$PROJECT_DIR$/Hibernate_CodeFirst_Exercise/Bills_Payment_Database/pom.xml" />
         <option value="$PROJECT_DIR$/ORM_Fundamentals/pom.xml" />
       </set>
     </option>
