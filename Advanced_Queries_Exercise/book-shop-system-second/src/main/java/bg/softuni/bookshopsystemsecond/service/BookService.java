@@ -30,4 +30,6 @@ public interface BookService {
 
     List<Book> getAllBooksWhereReleaseDateBefore(String date) throws ParseException;
 
+    List<Book> getAllBooksByYearOfReleaseDateNot(int year);
+
 }

@@ -89,5 +89,11 @@ public class BookServiceImpl implements BookService{
 
     }
 
+    @Override
+    public List<Book> getAllBooksByYearOfReleaseDateNot(int year) {
+        return this.bookRepository.findAllByReleaseDateYearNotIn(year)
+                .orElseThrow();
+    }
+
 
 }

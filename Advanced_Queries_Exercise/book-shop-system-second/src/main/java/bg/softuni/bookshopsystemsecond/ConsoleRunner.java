@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.Scanner;
 
 @Component
@@ -31,11 +32,23 @@ public class ConsoleRunner implements CommandLineRunner {
         public void run (String...args) throws Exception {
             String input = scanner.nextLine();
 
-            this.bookService.getAllBooksWhereReleaseDateBefore(input)
-                    .stream()
-                    .map(Book::getBookTitleEditionTypeAndPrice)
-                    .forEach(System.out::println);
+            printAllBooksWhereYearOfReleaseNot(input);
+
         }
+
+    private void printAllBooksWhereYearOfReleaseNot(String yearOfRel) {
+        this.bookService.getAllBooksByYearOfReleaseDateNot(Integer.parseInt(yearOfRel))
+                .stream()
+                .map(Book::getTitle)
+                .forEach(System.out::println);
+    }
+
+    private void printBooksReleaseDateBefore(String date) throws ParseException {
+        this.bookService.getAllBooksWhereReleaseDateBefore(date)
+                .stream()
+                .map(Book::getBookTitleEditionTypeAndPrice)
+                .forEach(System.out::println);
+    }
 
     private void printBooksWithPriceLowerThan5OrGreaterThan40() {
         this.bookService.getAllBooksWithPriceLessThanOrMoreThan(BigDecimal.valueOf(5L),BigDecimal.valueOf(40L))
