@@ -29,8 +29,12 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
+            String input = scanner.nextLine();
 
-            printBooksWithPriceLowerThan5OrGreaterThan40();
+            this.bookService.getAllBooksWhereReleaseDateBefore(input)
+                    .stream()
+                    .map(Book::getBookTitleEditionTypeAndPrice)
+                    .forEach(System.out::println);
         }
 
     private void printBooksWithPriceLowerThan5OrGreaterThan40() {

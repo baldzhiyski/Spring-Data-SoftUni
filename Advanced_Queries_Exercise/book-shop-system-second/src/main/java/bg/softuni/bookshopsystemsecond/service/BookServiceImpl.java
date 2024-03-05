@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -77,6 +79,14 @@ public class BookServiceImpl implements BookService{
     public List<Book> getAllBooksWithPriceLessThanOrMoreThan(BigDecimal low, BigDecimal high) {
         return this.bookRepository.findAllByPriceLessThanOrPriceGreaterThan(low,high)
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public List<Book> getAllBooksWhereReleaseDateBefore(String date) throws ParseException {
+        LocalDate parsedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return this.bookRepository.findAllByReleaseDateBefore(parsedDate)
+                .orElseThrow();
+
     }
 
 

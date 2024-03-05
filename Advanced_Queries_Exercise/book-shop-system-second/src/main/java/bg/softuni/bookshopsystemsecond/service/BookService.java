@@ -4,6 +4,7 @@ import bg.softuni.bookshopsystemsecond.domain.entities.Book;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -26,5 +27,7 @@ public interface BookService {
     List<Book> getAllByGoldenEditionTypeAndCopiesNumber(String editionType , Integer copies);
 
     List<Book> getAllBooksWithPriceLessThanOrMoreThan(BigDecimal low, BigDecimal high);
+
+    List<Book> getAllBooksWhereReleaseDateBefore(String date) throws ParseException;
 
 }
