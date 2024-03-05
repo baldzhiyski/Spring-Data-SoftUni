@@ -33,9 +33,14 @@ public class ConsoleRunner implements CommandLineRunner {
         public void run (String...args) throws Exception {
             String input = scanner.nextLine();
 
-
-
         }
+
+    private void printBooksTitlesWithAuthorLastNameStartsWith(String prefixForLastNameOfAuthor) {
+        this.bookService.getAllByAuthorLastNameStartsWith(prefixForLastNameOfAuthor)
+                .stream()
+                .map(Book::getTitle)
+                .forEach(System.out::println);
+    }
 
     private void printAllBooksTitlesContaining(String input) {
         this.bookService.getAllWithTitleContains(input)

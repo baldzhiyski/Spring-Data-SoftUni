@@ -46,11 +46,8 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public List<Book> getAllByAuthorLastNameStartsWith(String prefix) {
-        final List<Book> books = this.bookRepository.findAllByAuthorLastNameStartsWith(prefix).get();
-
-        books.forEach(b -> System.out.println(b.getTitle()));
-
-        return books;
+        return this.bookRepository.findAllByAuthorLastNameStartsWith(prefix)
+                .orElseThrow();
     }
     @Override
     public Integer getAllByTitleLengthGreaterThan(Integer length) {
