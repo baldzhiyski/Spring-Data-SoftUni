@@ -33,6 +33,8 @@ public class ConsoleRunner implements CommandLineRunner {
         public void run (String...args) throws Exception {
             String input = scanner.nextLine();
 
+            System.out.println(this.bookService.getCountOfBooksWithTitlesLengthMoreThan(Integer.parseInt(input)));
+
         }
 
     private void printBooksTitlesWithAuthorLastNameStartsWith(String prefixForLastNameOfAuthor) {

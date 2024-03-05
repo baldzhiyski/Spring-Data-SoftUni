@@ -34,4 +34,6 @@ public interface BookService {
 
     List<Book> getAllWithTitleContains(String word);
 
+    Integer getCountOfBooksWithTitlesLengthMoreThan(int number);
+
 }

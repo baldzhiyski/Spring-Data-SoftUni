@@ -98,5 +98,10 @@ public class BookServiceImpl implements BookService{
                 .orElseThrow();
     }
 
+    @Override
+    public Integer getCountOfBooksWithTitlesLengthMoreThan(int number) {
+        return this.bookRepository.countAllByTitleGreaterThan(number);
+    }
+
 
 }
