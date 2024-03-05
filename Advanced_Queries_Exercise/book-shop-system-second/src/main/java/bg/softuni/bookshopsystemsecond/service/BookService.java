@@ -1,9 +1,9 @@
 package bg.softuni.bookshopsystemsecond.service;
 
 import bg.softuni.bookshopsystemsecond.domain.entities.Book;
-import bg.softuni.bookshopsystemsecond.domain.entities.enums.EditionType;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,5 +24,7 @@ public interface BookService {
     List<Book> getAllByAgeRestriction(String restriction);
 
     List<Book> getAllByGoldenEditionTypeAndCopiesNumber(String editionType , Integer copies);
+
+    List<Book> getAllBooksWithPriceLessThanOrMoreThan(BigDecimal low, BigDecimal high);
 
 }

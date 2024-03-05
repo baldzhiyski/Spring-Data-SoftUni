@@ -7,6 +7,7 @@ import bg.softuni.bookshopsystemsecond.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -69,6 +70,12 @@ public class BookServiceImpl implements BookService{
     public List<Book> getAllByGoldenEditionTypeAndCopiesNumber(String editionType, Integer copies) {
         EditionType type = EditionType.valueOf(editionType.toUpperCase());
         return this.bookRepository.findAllByEditionTypeAndCopiesLessThan(type,copies)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public List<Book> getAllBooksWithPriceLessThanOrMoreThan(BigDecimal low, BigDecimal high) {
+        return this.bookRepository.findAllByPriceLessThanOrPriceGreaterThan(low,high)
                 .orElseThrow(NoSuchElementException::new);
     }
 

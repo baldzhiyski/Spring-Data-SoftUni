@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 @Component
@@ -28,10 +29,16 @@ public class ConsoleRunner implements CommandLineRunner {
 
         @Override
         public void run (String...args) throws Exception {
-            String input = scanner.nextLine();
 
-
+            printBooksWithPriceLowerThan5OrGreaterThan40();
         }
+
+    private void printBooksWithPriceLowerThan5OrGreaterThan40() {
+        this.bookService.getAllBooksWithPriceLessThanOrMoreThan(BigDecimal.valueOf(5L),BigDecimal.valueOf(40L))
+                .stream()
+                .map(Book::getBookTitleAndPriceFormat)
+                .forEach(System.out::println);
+    }
 
     private void printAllBookTitleByGoldEditionAndLessThan5000Copies() {
         this.bookService.getAllByGoldenEditionTypeAndCopiesNumber("gold",5000)
