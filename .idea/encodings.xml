@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$USER_HOME$/Downloads/Ex_skeleton/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/Ex_skeleton/src/main/resources" charset="UTF-8" />
     <file url="file://$USER_HOME$/Downloads/Lab_skeleton/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Advanced_Queries/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Advanced_Queries_Exercise/book-shop-system-second/src/main/java" charset="UTF-8" />
@@ -26,6 +27,7 @@
     <file url="file://$PROJECT_DIR$/Introduction To Hibernate/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Introduction_Hibernate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Introduction_Hibernate/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Mapping_Objects_Lab/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Mini_ORM_Project/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Mini_ORM_Project/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ORM_Fundamentals/src/main/java" charset="UTF-8" />

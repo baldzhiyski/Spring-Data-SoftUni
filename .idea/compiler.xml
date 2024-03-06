@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Mini_ORM_Project" />
         <module name="hibernate_introduction" />
+        <module name="Mapping_Objects_Lab" />
         <module name="Hospital_Database" />
         <module name="ORM_Workshop_ExtentedVersion" />
         <module name="Hibernate_Code_First_Lab" />
@@ -44,6 +45,7 @@
       <module name="Advanced_Querries_Exercise" options="-parameters" />
       <module name="Advanced_Query_Exercise" options="" />
       <module name="Advanced_Query_Lab" options="-parameters" />
+      <module name="Mapping_Objects_Lab" options="-parameters" />
       <module name="SpringBootDemo" options="-parameters" />
       <module name="SpringDataDemo" options="-parameters" />
       <module name="SpringDataExercise" options="-parameters" />
@@ -51,7 +53,7 @@
       <module name="book-shop-system" options="-parameters" />
       <module name="book-shop-system-second" options="-parameters" />
       <module name="demo" options="-parameters" />
-      <module name="springintro" options="-parameters" />
+      <module name="springintro" options="" />
       <module name="user-system" options="-parameters" />
     </option>
   </component>
