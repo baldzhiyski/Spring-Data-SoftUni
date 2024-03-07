@@ -94,17 +94,21 @@ public class GameServiceImpl implements GameService{
         Game gameInBase = gameToBeEdited.get();
 
         // Update the existing game entity with the edited data
+        updateInfo(gameInBase, editedGame);
+
+        // Save the updated game entity back to the database
+        this.gameRepository.save(gameInBase);
+
+        return String.format(SUCCESSFULLY_EDITED_GAME,editedGame.getTitle());
+
+    }
+
+    private static void updateInfo(Game gameInBase, Game editedGame) {
         gameInBase.setDescription(editedGame.getDescription());
         gameInBase.setSize(editedGame.getSize());
         gameInBase.setPrice(editedGame.getPrice());
         gameInBase.setTrailerURL(editedGame.getTrailerURL());
         gameInBase.setImageURL(editedGame.getImageURL());
-
-       // Save the updated game entity back to the database
-        this.gameRepository.save(gameInBase);
-
-        return String.format(SUCCESSFULLY_EDITED_GAME,editedGame.getTitle());
-
     }
 
     @Override
@@ -147,7 +151,7 @@ public class GameServiceImpl implements GameService{
     public String displayGamesNamesOfLoggedUser() {
         User loggedUser = this.userService.getLoggedUser();
 
-        if(loggedUser==null) return No;
+        if(loggedUser==null) return NO_USER_LOGGED_IN_TO_PURCHASE;
 
         return loggedUser.getGames()
                 .stream().map(Game::getTitle)
