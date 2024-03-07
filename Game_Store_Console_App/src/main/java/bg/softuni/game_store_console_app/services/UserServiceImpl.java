@@ -2,15 +2,18 @@ package bg.softuni.game_store_console_app.services;
 
 import bg.softuni.game_store_console_app.constants.ErrorMessages;
 import bg.softuni.game_store_console_app.entities.Game;
+import bg.softuni.game_store_console_app.entities.ShoppingCard;
 import bg.softuni.game_store_console_app.entities.User;
 import bg.softuni.game_store_console_app.entities.dtos.LogInUserDTO;
 import bg.softuni.game_store_console_app.entities.dtos.RegisterUserDTO;
 import bg.softuni.game_store_console_app.repositories.GameRepository;
+import bg.softuni.game_store_console_app.repositories.ShoppingCardRepository;
 import bg.softuni.game_store_console_app.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static bg.softuni.game_store_console_app.constants.ErrorMessages.*;
 import static bg.softuni.game_store_console_app.constants.SuccessfulMessages.*;
@@ -19,13 +22,17 @@ import static bg.softuni.game_store_console_app.constants.SuccessfulMessages.*;
 public class UserServiceImpl implements  UserService{
     private UserRepository userRepository;
     private GameRepository gameRepository;
+
+    private ShoppingCardRepository shoppingCardRepository;
     private ModelMapper mapper;
+
 
     private User loggedInUser;
 
-    public UserServiceImpl(UserRepository userRepository, GameRepository gameRepository, ModelMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, GameRepository gameRepository, ShoppingCardRepository shoppingCardRepository, ModelMapper mapper) {
         this.userRepository = userRepository;
         this.gameRepository = gameRepository;
+        this.shoppingCardRepository = shoppingCardRepository;
         this.mapper = mapper;
     }
 
@@ -115,7 +122,7 @@ public class UserServiceImpl implements  UserService{
     }
 
     @Override
-    public String purchaseGame(String[] arguments) {
+    public String addToShoppingCard(String[] arguments) {
         String titleOfGame = arguments[1];
 
         User loggedUser = getLoggedUser();
@@ -124,11 +131,73 @@ public class UserServiceImpl implements  UserService{
         Optional<Game> byTitle = this.gameRepository.findByTitle(titleOfGame);
 
         if(byTitle.isEmpty()) return INVALID_GAME_TITLE;
+        if (loggedUser.getGames().contains(byTitle.get())) {
+            return String.format(ALREADY_OWN_GAME, loggedUser.getFullName(), byTitle.get().getTitle());
+        }
 
-        loggedUser.getGames().add(byTitle.get());
+
+        loggedUser.getShoppingCard().getGames().add(byTitle.get());
 
         this.userRepository.save(loggedUser);
 
-        return String.format(SUCCESSFULLY_PURCHASE_GAME,loggedUser.getFullName(),byTitle.get().getTitle());
+        return String.format(SUCCESSFULLY_ADDED_TO_CARD_GAME,loggedUser.getFullName(),byTitle.get().getTitle());
+    }
+
+    @Override
+    public String removeGame(String[] arguments) {
+        String titleOfGame = arguments[1];
+        User loggedUser = getLoggedUser();
+        if(loggedUser==null) return NO_USER_LOGGED_IN;
+
+        Optional<Game> byTitle = this.gameRepository.findByTitle(titleOfGame);
+
+        if(byTitle.isEmpty()) return INVALID_GAME_TITLE;
+
+        loggedUser.getShoppingCard().getGames().remove(byTitle.get());
+
+        this.userRepository.save(loggedUser);
+
+        return String.format(SUCCESSFULLY_REMOVED_GAME,loggedUser.getFullName(),byTitle.get().getTitle());
+
+    }
+
+    @Override
+    public String buyEverything() {
+        User loggedUser = getLoggedUser();
+        if(loggedUser==null) return NO_USER_LOGGED_IN;
+
+        if(loggedUser.getShoppingCard().getGames().isEmpty()) return NO_ADDED_GAMES_TO_THE_CARD;
+
+        loggedUser.getShoppingCard().getGames()
+                .forEach(game-> loggedUser.getGames().add(game));
+
+        this.userRepository.save(loggedUser);
+
+        String result = loggedUser.getGames()
+                .stream().map(Game::getTitle)
+                .collect(Collectors.joining(System.lineSeparator()));
+
+        loggedUser.getShoppingCard().getGames().clear();
+
+        return String.format(SUCCESSFULLY_BOUGHT_GAMES,loggedUser.getFullName(),result);
+    }
+
+    @Override
+    public String assignShoppingCard(String[] arguments) {
+        Long userId = Long.parseLong(arguments[1]);
+
+        Optional<User> byId = this.userRepository.findById(userId);
+
+        if(byId.isEmpty()) return NO_USER_FOUND;
+
+        ShoppingCard shoppingCard = new ShoppingCard();
+
+        this.shoppingCardRepository.save(shoppingCard);
+
+        byId.get().setShoppingCard(shoppingCard);
+
+        this.userRepository.save(byId.get());
+
+        return String.format(SUCCESSFULLY_ASSIGNED_CARD,byId.get().getFullName());
     }
 }

@@ -13,5 +13,11 @@ public interface UserService {
 
     User getLoggedUser();
 
-    String purchaseGame(String[] arguments);
+    String addToShoppingCard(String[] arguments);
+
+    String removeGame(String[] arguments);
+
+    String buyEverything();
+
+    String assignShoppingCard(String[] arguments);
 }

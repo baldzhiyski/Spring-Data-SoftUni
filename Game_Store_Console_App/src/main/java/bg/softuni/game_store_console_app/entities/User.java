@@ -37,4 +37,7 @@ public class User extends BaseEntity{
     @Column(name = "is_admin")
     private Boolean isAdmin;
 
+    @OneToOne
+    private ShoppingCard shoppingCard;
+
 }

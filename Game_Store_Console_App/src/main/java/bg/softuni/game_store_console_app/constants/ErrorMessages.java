@@ -18,4 +18,6 @@ public enum ErrorMessages {
     public static final String ALREADY_EXISTING_GAME = "The game already exists !";
     public static final String INVALID_GAME_ID = "The game does not exists !";
     public static final String NO_USER_LOGGED_IN_TO_PURCHASE = "Cannot purchase a game ! Please log into your account first !";
+    public static final String ALREADY_OWN_GAME = "Already own the game";
+    public static final String NO_ADDED_GAMES_TO_THE_CARD = "The Card is empty !";
 }
