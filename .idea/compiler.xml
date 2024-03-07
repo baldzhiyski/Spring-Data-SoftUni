@@ -17,6 +17,7 @@
         <module name="Sales_Database" />
         <module name="book-shop-system-second" />
         <module name="user-system" />
+        <module name="Game_Store_Console_App" />
         <module name="Advanced_Query_Lab" />
         <module name="introhibernate_ex" />
         <module name="Gringotts_Database" />
@@ -45,6 +46,7 @@
       <module name="Advanced_Querries_Exercise" options="-parameters" />
       <module name="Advanced_Query_Exercise" options="" />
       <module name="Advanced_Query_Lab" options="-parameters" />
+      <module name="Game_Store_Console_App" options="-parameters" />
       <module name="Mapping_Objects_Lab" options="-parameters" />
       <module name="SpringBootDemo" options="-parameters" />
       <module name="SpringDataDemo" options="-parameters" />
