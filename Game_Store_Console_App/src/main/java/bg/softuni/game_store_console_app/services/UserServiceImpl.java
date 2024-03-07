@@ -177,7 +177,10 @@ public class UserServiceImpl implements  UserService{
                 .stream().map(Game::getTitle)
                 .collect(Collectors.joining(System.lineSeparator()));
 
-        loggedUser.getShoppingCard().getGames().clear();
+        ShoppingCard shoppingCard = loggedUser.getShoppingCard();
+        shoppingCard.getGames().clear();
+
+        this.shoppingCardRepository.save(shoppingCard);
 
         return String.format(SUCCESSFULLY_BOUGHT_GAMES,loggedUser.getFullName(),result);
     }

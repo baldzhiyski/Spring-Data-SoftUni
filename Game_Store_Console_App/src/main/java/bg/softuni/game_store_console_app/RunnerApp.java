@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 import static bg.softuni.game_store_console_app.constants.Commands.*;
-import static java.lang.Long.parseLong;
 
 @Component
 public class RunnerApp implements CommandLineRunner {
@@ -26,6 +25,8 @@ public class RunnerApp implements CommandLineRunner {
         this.gameService = gameService;
     }
 
+    // In order to work we should assign first each user with a card and then we should add some games to the card of
+    // user and then we can say buyItem or removeItem
     @Override
     public void run(String... args) throws Exception {
         String input;
