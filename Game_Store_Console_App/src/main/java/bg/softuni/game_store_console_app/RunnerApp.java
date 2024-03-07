@@ -1,5 +1,6 @@
 package bg.softuni.game_store_console_app;
 
+import bg.softuni.game_store_console_app.services.GameService;
 import bg.softuni.game_store_console_app.services.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,9 +14,12 @@ public class RunnerApp implements CommandLineRunner {
     private Scanner scanner;
     private UserService userService;
 
-    public RunnerApp(Scanner scanner, UserService userService) {
+    private GameService gameService;
+
+    public RunnerApp(Scanner scanner, UserService userService, GameService gameService) {
         this.scanner = scanner;
         this.userService = userService;
+        this.gameService = gameService;
     }
 
     @Override
@@ -28,7 +32,10 @@ public class RunnerApp implements CommandLineRunner {
            final String output= switch (command){
                 case REGISTER_USER -> this.userService.registerUser(arguments);
                 case LOG_IN_USER -> this.userService.loginUser(arguments);
-               case LOG_OUT -> this.userService.logOut();
+                case LOG_OUT -> this.userService.logOut();
+                case ADD_GAME -> this.gameService.addGame(arguments);
+                case EDIT_GAME -> this.gameService.editGame(arguments);
+                case DELETE_GAME -> this.gameService.deleteGame(arguments);
                 default -> "No such command found";
             };
             System.out.println(output);

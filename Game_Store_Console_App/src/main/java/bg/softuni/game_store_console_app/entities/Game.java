@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Table(name = "games")
 public class Game extends BaseEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String title;
 
     @Column

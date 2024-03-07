@@ -48,8 +48,14 @@ public class UserServiceImpl implements  UserService{
             return USER_ALREADY_EXISTS;
         }
 
+
         User mappedUser = mapper.map(userRegisterDto, User.class);
 
+        if(this.userRepository.count() == 0){
+            mappedUser.setIsAdmin(true);
+        }else{
+            mappedUser.setIsAdmin(false);
+        }
         this.userRepository.save(mappedUser);
 
         return String.format(SUCCESSFULLY_REGISTER,mappedUser.getFullName());
