@@ -36,6 +36,10 @@ public class RunnerApp implements CommandLineRunner {
                 case ADD_GAME -> this.gameService.addGame(arguments);
                 case EDIT_GAME -> this.gameService.editGame(arguments);
                 case DELETE_GAME -> this.gameService.deleteGame(arguments);
+                case ALL_GAMES -> this.gameService.displayGames();
+                case DETAILS_PER_GAME -> this.gameService.displayInfoPerGame(arguments[1]);
+                case OWNED_GAMES -> this.gameService.displayGamesNamesOfLoggedUser();
+                case PURCHASE_GAME -> this.userService.purchaseGame(arguments);
                 default -> "No such command found";
             };
             System.out.println(output);

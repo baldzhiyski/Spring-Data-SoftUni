@@ -37,4 +37,20 @@ public class Game extends BaseEntity{
 
     @Column(name = "realease_date")
     private LocalDate releaseDate;
+
+    @Override
+    public String toString() {
+        return String.format("%s %.2f",this.title,this.price);
+    }
+
+    public String detailedDescription(){
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("Title: ").append(title).append(System.lineSeparator());
+        builder.append("Price: ").append(price).append(System.lineSeparator());
+        builder.append("Description ").append(description).append(System.lineSeparator());
+        builder.append("Release date: ").append(releaseDate).append(System.lineSeparator());
+
+        return builder.toString();
+    }
 }

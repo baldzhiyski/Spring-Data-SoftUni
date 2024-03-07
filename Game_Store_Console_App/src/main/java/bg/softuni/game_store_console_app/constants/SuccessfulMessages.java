@@ -8,4 +8,5 @@ public enum SuccessfulMessages {
     public static final String SUCCESSFULLY_ADDED_GAME= "Added %s";
     public static final String SUCCESSFULLY_EDITED_GAME= "Edited %s";
     public static final String SUCCESSFULLY_DELETED_GAME= "Deleted %s";
+    public static final String SUCCESSFULLY_PURCHASE_GAME= "User %s has successfully purchased game %s !";
 }

@@ -1,9 +1,11 @@
 package bg.softuni.game_store_console_app.services;
 
 import bg.softuni.game_store_console_app.constants.ErrorMessages;
+import bg.softuni.game_store_console_app.entities.Game;
 import bg.softuni.game_store_console_app.entities.User;
 import bg.softuni.game_store_console_app.entities.dtos.LogInUserDTO;
 import bg.softuni.game_store_console_app.entities.dtos.RegisterUserDTO;
+import bg.softuni.game_store_console_app.repositories.GameRepository;
 import bg.softuni.game_store_console_app.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -16,12 +18,14 @@ import static bg.softuni.game_store_console_app.constants.SuccessfulMessages.*;
 @Service
 public class UserServiceImpl implements  UserService{
     private UserRepository userRepository;
+    private GameRepository gameRepository;
     private ModelMapper mapper;
 
     private User loggedInUser;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, GameRepository gameRepository, ModelMapper mapper) {
         this.userRepository = userRepository;
+        this.gameRepository = gameRepository;
         this.mapper = mapper;
     }
 
@@ -103,5 +107,28 @@ public class UserServiceImpl implements  UserService{
     @Override
     public boolean isLoggedUserAdmin() {
         return this.loggedInUser != null && this.loggedInUser.getIsAdmin();
+    }
+
+    @Override
+    public User getLoggedUser() {
+        return this.loggedInUser;
+    }
+
+    @Override
+    public String purchaseGame(String[] arguments) {
+        String titleOfGame = arguments[1];
+
+        User loggedUser = getLoggedUser();
+        if(loggedUser==null) return NO_USER_LOGGED_IN;
+
+        Optional<Game> byTitle = this.gameRepository.findByTitle(titleOfGame);
+
+        if(byTitle.isEmpty()) return INVALID_GAME_TITLE;
+
+        loggedUser.getGames().add(byTitle.get());
+
+        this.userRepository.save(loggedUser);
+
+        return String.format(SUCCESSFULLY_PURCHASE_GAME,loggedUser.getFullName(),byTitle.get().getTitle());
     }
 }

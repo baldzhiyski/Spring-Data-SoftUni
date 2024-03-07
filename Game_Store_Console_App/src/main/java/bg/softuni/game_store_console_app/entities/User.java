@@ -27,7 +27,7 @@ public class User extends BaseEntity{
     @Column(name = "full_name",nullable = false)
     private String fullName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinTable
     private List<Game> games;
 

@@ -1,6 +1,7 @@
 package bg.softuni.game_store_console_app.services;
 
 import bg.softuni.game_store_console_app.entities.Game;
+import bg.softuni.game_store_console_app.entities.User;
 import bg.softuni.game_store_console_app.entities.dtos.AddGameDTO;
 import bg.softuni.game_store_console_app.entities.dtos.EditGameDTO;
 import bg.softuni.game_store_console_app.repositories.GameRepository;
@@ -14,16 +15,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static bg.softuni.game_store_console_app.constants.ErrorMessages.*;
 import static bg.softuni.game_store_console_app.constants.SuccessfulMessages.*;
 
 @Service
 public class GameServiceImpl implements GameService{
-    private GameRepository gameRepository;
-    private UserService userService;
+    private final GameRepository gameRepository;
+    private final UserService userService;
 
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
     @Autowired
     public GameServiceImpl(GameRepository gameRepository, UserService userService, ModelMapper mapper) {
         this.gameRepository = gameRepository;
@@ -120,5 +122,35 @@ public class GameServiceImpl implements GameService{
         this.gameRepository.delete(gameById.get());
 
         return String.format(SUCCESSFULLY_DELETED_GAME,title);
+    }
+
+    @Override
+    public String displayGames() {
+       return this.gameRepository.findAll()
+                .stream()
+                .map(Game::toString)
+                .collect(Collectors.joining(System.lineSeparator()));
+    }
+
+    @Override
+    public String displayInfoPerGame(String gameName) {
+        Optional<Game> byTitle = this.gameRepository.findByTitle(gameName);
+
+        if(byTitle.isEmpty()) return INVALID_GAME_TITLE;
+
+        Game game = byTitle.get();
+
+       return game.detailedDescription();
+    }
+
+    @Override
+    public String displayGamesNamesOfLoggedUser() {
+        User loggedUser = this.userService.getLoggedUser();
+
+        if(loggedUser==null) return No;
+
+        return loggedUser.getGames()
+                .stream().map(Game::getTitle)
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 }

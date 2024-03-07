@@ -17,4 +17,5 @@ public enum ErrorMessages {
     public static final String NO_PERMISSION = "The logged user is not an admin ! Only Admins have permission!";
     public static final String ALREADY_EXISTING_GAME = "The game already exists !";
     public static final String INVALID_GAME_ID = "The game does not exists !";
+    public static final String NO_USER_LOGGED_IN_TO_PURCHASE = "Cannot purchase a game ! Please log into your account first !";
 }
