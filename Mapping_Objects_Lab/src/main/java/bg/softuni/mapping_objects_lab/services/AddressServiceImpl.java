@@ -2,6 +2,7 @@ package bg.softuni.mapping_objects_lab.services;
 
 import bg.softuni.mapping_objects_lab.entities.Address;
 import bg.softuni.mapping_objects_lab.entities.dtos.AddressDTO;
+import bg.softuni.mapping_objects_lab.entities.dtos.AddressWithIdDTO;
 import bg.softuni.mapping_objects_lab.repositories.AddressRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,10 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public Address create(AddressDTO data) {
+    public AddressWithIdDTO create(AddressDTO data) {
         Address address = mapper.map(data, Address.class);
-       return this.addressRepository.save(address);
+        Address saved = this.addressRepository.save(address);
+
+        return  this.mapper.map(saved,AddressWithIdDTO.class);
     }
 }

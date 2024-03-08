@@ -1,12 +1,13 @@
 package bg.softuni.mapping_objects_lab;
 
-import bg.softuni.mapping_objects_lab.entities.Address;
 import bg.softuni.mapping_objects_lab.entities.Employee;
 import bg.softuni.mapping_objects_lab.entities.dtos.AddressDTO;
+import bg.softuni.mapping_objects_lab.entities.dtos.AddressWithIdDTO;
 import bg.softuni.mapping_objects_lab.entities.dtos.CreateEmployeeDTO;
 import bg.softuni.mapping_objects_lab.entities.dtos.EmployeeNameAndSalaryDTO;
 import bg.softuni.mapping_objects_lab.services.AddressService;
 import bg.softuni.mapping_objects_lab.services.EmployeeService;
+import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+
 @Component
 public class AppMain implements CommandLineRunner {
     private final AddressService addressService;
@@ -24,19 +26,52 @@ public class AppMain implements CommandLineRunner {
 
     private final ModelMapper mapper;
 
+    private final Gson gson;
+
     @Autowired
-    public AppMain(AddressService addressService, EmployeeService employeeService, Scanner scanner, ModelMapper mapper) {
+    public AppMain(AddressService addressService, EmployeeService employeeService, Scanner scanner, ModelMapper mapper, Gson gson) {
         this.addressService = addressService;
         this.employeeService = employeeService;
         this.scanner = scanner;
         this.mapper = mapper;
+        this.gson = gson;
     }
 
     @Override
     public void run(String... args) throws Exception {
-       printEmployeeNames();
+       createEmployeeGson();
 
     }
+
+    private void createEmployeeGson() {
+        String input = this.scanner.nextLine();
+
+        AddressDTO addressDTO = this.gson.fromJson(input, AddressDTO.class);
+
+        String input2 = this.scanner.nextLine();
+
+        CreateEmployeeDTO employeeDTO = this.gson.fromJson(input2, CreateEmployeeDTO.class);
+
+        employeeDTO.setAddress(addressDTO);
+
+        Employee employee = this.employeeService.create(employeeDTO);
+
+        System.out.println(employee);
+
+    }
+
+    private void createAddressGson() {
+        String input = scanner.nextLine();
+
+        AddressWithIdDTO data = this.gson.fromJson(input, AddressWithIdDTO.class);
+
+        AddressDTO createdAddress = addressService.create(data);
+
+        // We begin with json and end with json
+
+        System.out.println(this.gson.toJson(createdAddress));
+    }
+
     private void printEmployeeNameAndSalary() {
         EmployeeNameAndSalaryDTO result = this.employeeService.findNameAndSalaryById(1L);
 
@@ -74,12 +109,12 @@ public class AppMain implements CommandLineRunner {
     }
 
     private void createAddress() {
-        String country = scanner.nextLine();
-        String city = scanner.nextLine();
-
-        AddressDTO data = new AddressDTO(country,city);
-        Address address = addressService.create(data);
-
-        System.out.println(address);
+//        String country = scanner.nextLine();
+//        String city = scanner.nextLine();
+//
+//        AddressDTO data = new AddressDTO(country,city);
+//        Address address = addressService.create(data);
+//
+//        System.out.println(address);
     }
 }
