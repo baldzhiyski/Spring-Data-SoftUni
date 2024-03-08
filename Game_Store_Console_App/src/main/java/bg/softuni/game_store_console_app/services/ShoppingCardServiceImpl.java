@@ -29,24 +29,4 @@ public class ShoppingCardServiceImpl implements ShoppingCardService{
     }
 
 
-    @Override
-    public String addGamesToShoppingCardOfUserById(String userId) {
-        Optional<Set<Game>> allGames = this.gameRepository.findDistinct();
-
-        Long id = Long.valueOf(userId);
-
-        Optional<User> byId = this.userRepository.findById(id);
-
-        if(byId.isEmpty()) return NO_USER_FOUND;
-
-        ShoppingCard shoppingCard = byId.get().getShoppingCard();
-
-        shoppingCard.setGames(allGames.get());
-
-        this.shoppingCardRepository.save(shoppingCard);
-
-        this.userRepository.save(byId.get());
-
-        return String.format(SuccessfulMessages.SUCCESSFULLY_ADDED_GAMES_TO_CARD,byId.get().getFullName());
-    }
 }

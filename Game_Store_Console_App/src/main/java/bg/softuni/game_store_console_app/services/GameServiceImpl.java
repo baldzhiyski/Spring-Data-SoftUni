@@ -8,6 +8,7 @@ import bg.softuni.game_store_console_app.repositories.GameRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -112,6 +113,7 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
+    @Transactional
     public String deleteGame(String[] arguments) {
         if(!this.userService.isLoggedUserAdmin()) return NO_PERMISSION;
 
