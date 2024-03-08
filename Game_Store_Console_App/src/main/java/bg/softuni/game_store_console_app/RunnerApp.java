@@ -46,7 +46,6 @@ public class RunnerApp implements CommandLineRunner {
                 case OWNED_GAMES -> this.gameService.displayGamesNamesOfLoggedUser();
                 case ADD_GAME_TO_CARD -> this.userService.addToShoppingCard(arguments);
                 case REMOVE_GAME -> this.userService.removeGame(arguments);
-                case ASSIGN_SHOPPING_CARD -> this.userService.assignShoppingCard(arguments);
                 case PURCHASE_EVERYTHING -> this.userService.buyEverything();
                 case ADD_GAMES_TO_CARD -> this.shoppingCardService.addGamesToShoppingCardOfUserById(arguments[1]);
                 default -> "No such command found";

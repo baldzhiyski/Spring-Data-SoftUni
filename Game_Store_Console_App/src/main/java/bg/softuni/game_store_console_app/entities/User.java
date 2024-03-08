@@ -4,13 +4,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static bg.softuni.game_store_console_app.constants.Patterns.EMAIL_PATTERN;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
@@ -37,7 +37,12 @@ public class User extends BaseEntity{
     @Column(name = "is_admin")
     private Boolean isAdmin;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private ShoppingCard shoppingCard;
+
+    public User(){
+        this.games = new ArrayList<>();
+        this.orders = new ArrayList<>();
+    }
 
 }
