@@ -15,5 +15,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> getRandomEntity();
 
     List<User> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerLastName();
+    List<User> findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsDescLastNameAsc();
 
 }
