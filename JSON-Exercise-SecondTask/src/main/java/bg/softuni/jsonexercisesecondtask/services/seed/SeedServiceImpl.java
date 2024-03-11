@@ -128,22 +128,19 @@ public class SeedServiceImpl  implements SeedService{
 
     @Override
     public void seedSalesRecords() throws FileNotFoundException {
-        if(saleRepository.count() > 0) return;
+        if (saleRepository.count() > 0) return;
         Random random = new Random();
         Set<Sale> sales = new HashSet<>();
-        for (int i = 0; i < 10; i++) {
+        List<Car> availableCars = this.carRepository.findAll();
+        Collections.shuffle(availableCars);
+        for (int i = 0; i < 10 && i < availableCars.size(); i++) {
             int randomIndex = random.nextInt(DISCOUNTS.length);
-
-            Car randomCar = this.carRepository.getRandomEntity()
-                    .orElseThrow(NoSuchElementException::new);
-
+            Car randomCar = availableCars.get(i);
             Customer randomCustomer = this.customerRepository.getRandomEntity()
                     .orElseThrow(NoSuchElementException::new);
-
-            Sale sale = new Sale(DISCOUNTS[randomIndex],randomCar,randomCustomer);
+            Sale sale = new Sale(DISCOUNTS[randomIndex], randomCar, randomCustomer);
             sales.add(sale);
         }
-
         this.saleRepository.saveAllAndFlush(sales);
     }
 
