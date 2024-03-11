@@ -16,4 +16,5 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Optional<Product> getRandomEntity();
 
     List<Product> findAllByPriceBetweenAndBuyerIsNullOrderByPrice(BigDecimal low, BigDecimal high);
+
 }

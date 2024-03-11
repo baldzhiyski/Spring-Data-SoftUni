@@ -9,4 +9,5 @@ import java.util.List;
 public interface ProductService {
 
     List<ProductInRangeDto> getAllInSpecificRange(BigDecimal low,BigDecimal high) throws IOException;
+
 }
