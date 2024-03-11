@@ -18,4 +18,5 @@ public class UserSoldProductsWithAgeDto {
     private Integer age;
 
     private ProductWrapperDto sellingProducts ;
+
 }

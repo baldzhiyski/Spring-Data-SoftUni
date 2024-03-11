@@ -3,7 +3,7 @@ package bg.softuni.jsonexercise.services.user;
 import bg.softuni.jsonexercise.constants.Paths;
 import bg.softuni.jsonexercise.constants.Utils;
 import bg.softuni.jsonexercise.domain.dtos.product.ProductDto;
-import bg.softuni.jsonexercise.domain.dtos.product.wrapper.ProductWrapperDto;
+import bg.softuni.jsonexercise.domain.dtos.user.UserModelAbstract;
 import bg.softuni.jsonexercise.domain.dtos.user.UserSoldProductsDto;
 import bg.softuni.jsonexercise.domain.dtos.user.UserSoldProductsWithAgeDto;
 import bg.softuni.jsonexercise.domain.dtos.user.wrapper.UserWrapperDto;
@@ -45,14 +45,18 @@ public class UserServiceImpl  implements UserService{
         List<UserSoldProductsWithAgeDto> users = this.userRepository
                 .findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerLastName()
                 .stream()
-                .map(user -> {
-                    UserSoldProductsWithAgeDto userDto = mapper.map(user, UserSoldProductsWithAgeDto.class);
-                    Set<ProductDto> productDtoList = mapProductsToDto(user.getSellingProducts());
-                    ProductWrapperDto productWrapperDto = ProductWrapperDto.productsSoldWithCountDto(productDtoList);
-                    userDto.setSellingProducts(productWrapperDto);
-                    return userDto;
-                })
+                .map(user -> mapper.map(user, UserModelAbstract.class))
+                .map(UserModelAbstract::toUserWithProductsDto)
                 .collect(Collectors.toList());
+
+//       Mapping inside the service without using the abstract dto
+//        user -> {
+//            UserSoldProductsWithAgeDto userDto = mapper.map(user, UserSoldProductsWithAgeDto.class);
+//            Set<ProductDto> productDtoList = mapProductsToDto(user.getSellingProducts());
+//            ProductWrapperDto productWrapperDto = ProductWrapperDto.productsSoldWithCountDto(productDtoList);
+//            userDto.setSellingProducts(productWrapperDto);
+//            return userDto;
+//        }
 
         UserWrapperDto wrapperDto = new UserWrapperDto(users);
 
