@@ -48,7 +48,7 @@ public class UserServiceImpl  implements UserService{
                 .map(user -> {
                     UserSoldProductsWithAgeDto userDto = mapper.map(user, UserSoldProductsWithAgeDto.class);
                     Set<ProductDto> productDtoList = mapProductsToDto(user.getSellingProducts());
-                    ProductWrapperDto productWrapperDto = new ProductWrapperDto(productDtoList.size(), productDtoList);
+                    ProductWrapperDto productWrapperDto = ProductWrapperDto.productsSoldWithCountDto(productDtoList);
                     userDto.setSellingProducts(productWrapperDto);
                     return userDto;
                 })
