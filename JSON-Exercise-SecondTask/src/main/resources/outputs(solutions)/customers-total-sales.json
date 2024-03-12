@@ -1,0 +1,52 @@
+[
+  {
+    "fullName": "Emmitt Benally",
+    "boughtCars": 5,
+    "spentMoney": 5398.12
+  },
+  {
+    "fullName": "Natalie Poli",
+    "boughtCars": 3,
+    "spentMoney": 2838.77
+  },
+  {
+    "fullName": "Audrea Cardinal",
+    "boughtCars": 3,
+    "spentMoney": 3291.15
+  },
+  {
+    "fullName": "Audrea Cardinal",
+    "boughtCars": 3,
+    "spentMoney": 3738.72
+  },
+  {
+    "fullName": "Carole Witman",
+    "boughtCars": 3,
+    "spentMoney": 1653.44
+  },
+  {
+    "fullName": "Brett Brickley",
+    "boughtCars": 3,
+    "spentMoney": 416410.74
+  },
+  {
+    "fullName": "Yvonne Mccalla",
+    "boughtCars": 3,
+    "spentMoney": 5524.61
+  },
+  {
+    "fullName": "Faustina Burgher",
+    "boughtCars": 5,
+    "spentMoney": 9509.25
+  },
+  {
+    "fullName": "Faustina Burgher",
+    "boughtCars": 3,
+    "spentMoney": 59442.46
+  },
+  {
+    "fullName": "Garret Capron",
+    "boughtCars": 3,
+    "spentMoney": 2130.44
+  }
+]

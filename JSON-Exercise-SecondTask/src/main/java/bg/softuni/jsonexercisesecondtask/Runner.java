@@ -30,6 +30,7 @@ public class Runner implements CommandLineRunner {
 //        this.customerService.getAllCustomersOrderByBirthdate();
 //        this.carService.getAllCarsMadeFromToyota("Toyota");
 //        this.supplierService.getAllSuppliersNotImportingAbroad();
-        this.carService.getAllCarsWithInfoForTheParts();
+//        this.carService.getAllCarsWithInfoForTheParts();
+        this.customerService.getAllCustomerWithSpentMoney();
     }
 }

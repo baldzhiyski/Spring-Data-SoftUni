@@ -1,6 +1,7 @@
 package bg.softuni.jsonexercisesecondtask.services.customer;
 
 import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.CustomerDtoWithSales;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.CustomerWthCarsAndMoneyDto;
 import bg.softuni.jsonexercisesecondtask.repositories.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static bg.softuni.jsonexercisesecondtask.constants.Paths.PATH_FIFTH_EX;
 import static bg.softuni.jsonexercisesecondtask.constants.Paths.PATH_FIRST_EX;
 import static bg.softuni.jsonexercisesecondtask.constants.Utils.writeJsonOnFile;
 
@@ -32,6 +34,15 @@ public class CustomerServiceImpl implements CustomerService {
                 .collect(Collectors.toList());
 
         writeJsonOnFile(customers, Path.of(PATH_FIRST_EX));
+
+        return customers;
+    }
+
+    @Override
+    public List<CustomerWthCarsAndMoneyDto> getAllCustomerWithSpentMoney() throws IOException {
+        List<CustomerWthCarsAndMoneyDto> customers = this.customerRepository.findAllByCountOfCars();
+
+        writeJsonOnFile(customers,Path.of(PATH_FIFTH_EX));
 
         return customers;
     }
