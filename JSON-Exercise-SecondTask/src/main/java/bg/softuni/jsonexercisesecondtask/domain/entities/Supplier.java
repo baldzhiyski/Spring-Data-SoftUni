@@ -1,9 +1,6 @@
 package bg.softuni.jsonexercisesecondtask.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +16,7 @@ import java.util.Set;
 @Table(name = "suppliers")
 public class Supplier extends BaseEntity{
 
-    @OneToMany(targetEntity = Part.class,mappedBy = "supplier")
+    @OneToMany(targetEntity = Part.class,mappedBy = "supplier",fetch = FetchType.EAGER)
     private Set<Part> parts;
 
     @Column(nullable = false)
