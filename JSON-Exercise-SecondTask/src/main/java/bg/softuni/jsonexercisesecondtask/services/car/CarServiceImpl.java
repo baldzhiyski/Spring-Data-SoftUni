@@ -3,6 +3,7 @@ package bg.softuni.jsonexercisesecondtask.services.car;
 import bg.softuni.jsonexercisesecondtask.constants.Paths;
 import bg.softuni.jsonexercisesecondtask.constants.Utils;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.car.CarDto;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.car.CarDtoWithParts;
 import bg.softuni.jsonexercisesecondtask.repositories.CarRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,17 @@ public class CarServiceImpl implements CarService{
 
         return cars;
 
+    }
+
+    @Override
+    public List<CarDtoWithParts> getAllCarsWithInfoForTheParts() throws IOException {
+        List<CarDtoWithParts> cars = this.carRepository.findAll()
+                .stream()
+                .map(CarDtoWithParts::fromCar)
+                .collect(Collectors.toList());
+
+        Utils.writeJsonOnFile(cars, Path.of(Paths.PATH_FORTH_EX));
+
+        return  cars;
     }
 }
