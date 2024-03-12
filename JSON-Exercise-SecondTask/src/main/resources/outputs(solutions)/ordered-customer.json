@@ -1,0 +1,432 @@
+[
+  {
+    "name": "Louann Holzworth",
+    "birthDate": "Aug 7, 1960, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Donnetta Soliz",
+    "birthDate": "Apr 17, 1963, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Rema Revelle",
+    "birthDate": "Oct 30, 1970, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Carri Knapik",
+    "birthDate": "Jul 19, 1972, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": [
+      {
+        "discount": 0.0,
+        "carId": "62",
+        "carMake": "Mercedes",
+        "carModel": "A 140",
+        "carParts": [
+          {
+            "name": "Fan clutch",
+            "price": 120.99,
+            "quantity": 10
+          },
+          {
+            "name": "Starter motor",
+            "price": 0.99,
+            "quantity": 10
+          },
+          {
+            "name": "Valve spring",
+            "price": 104.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lino Subia",
+    "birthDate": "Aug 1, 1975, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Garret Capron",
+    "birthDate": "Oct 28, 1975, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": [
+      {
+        "discount": 0.15,
+        "carId": "212",
+        "carMake": "Chevy",
+        "carModel": "Matiz",
+        "carParts": [
+          {
+            "name": "Rear Left Side Outer door handle",
+            "price": 120.99,
+            "quantity": 10
+          },
+          {
+            "name": "Front Left Side Window motor",
+            "price": 56.99,
+            "quantity": 10
+          },
+          {
+            "name": "Oil gasket",
+            "price": 130.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Teddy Hobby",
+    "birthDate": "Nov 25, 1975, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": [
+      {
+        "discount": 0.0,
+        "carId": "5",
+        "carMake": "Opel",
+        "carModel": "Kadet",
+        "carParts": [
+          {
+            "name": "Fuel filter",
+            "price": 162.99,
+            "quantity": 10
+          },
+          {
+            "name": "Oil strainer",
+            "price": 45.29,
+            "quantity": 10
+          },
+          {
+            "name": "Radiator (fan) shroud",
+            "price": 300.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Audrea Cardinal",
+    "birthDate": "Sep 10, 1976, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Francis Mckim",
+    "birthDate": "Dec 30, 1977, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Brett Brickley",
+    "birthDate": "Jun 16, 1980, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Kristian Engberg",
+    "birthDate": "Mar 28, 1981, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Hipolito Lamoreaux",
+    "birthDate": "Jul 30, 1982, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Zada Attwood",
+    "birthDate": "Sep 27, 1982, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Sylvie Mcelravy",
+    "birthDate": "Jun 24, 1983, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": [
+      {
+        "discount": 0.1,
+        "carId": "161",
+        "carMake": "Nissan",
+        "carModel": "Altima",
+        "carParts": [
+          {
+            "name": "Rocker arm",
+            "price": 98.99,
+            "quantity": 10
+          },
+          {
+            "name": "Cowl screen",
+            "price": 1500.34,
+            "quantity": 10
+          },
+          {
+            "name": "Transmission gear",
+            "price": 15.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rico Peer",
+    "birthDate": "Jul 3, 1984, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Hai Everton",
+    "birthDate": "Mar 14, 1985, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Jimmy Grossi",
+    "birthDate": "Nov 9, 1986, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Carole Witman",
+    "birthDate": "Jan 21, 1987, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Oren Perlman",
+    "birthDate": "Apr 5, 1988, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Marcelle Griego",
+    "birthDate": "May 12, 1988, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": [
+      {
+        "discount": 0.4,
+        "carId": "106",
+        "carMake": "Toyota",
+        "carModel": "Prius",
+        "carParts": [
+          {
+            "name": "Rear Right Side Window motor",
+            "price": 22.99,
+            "quantity": 10
+          },
+          {
+            "name": "Rims",
+            "price": 4020.99,
+            "quantity": 10
+          },
+          {
+            "name": "Hinge",
+            "price": 11.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Natalie Poli",
+    "birthDate": "Oct 4, 1990, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Cinthia Lasala",
+    "birthDate": "Jan 7, 1992, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": [
+      {
+        "discount": 0.15,
+        "carId": "12",
+        "carMake": "Opel",
+        "carModel": "Vectra",
+        "carParts": [
+          {
+            "name": "Clutch shoe",
+            "price": 10.49,
+            "quantity": 10
+          },
+          {
+            "name": "Rear Right Side Outer door handle",
+            "price": 80.99,
+            "quantity": 10
+          },
+          {
+            "name": "Rear Left Quarter Glass",
+            "price": 100.55,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ann Mcenaney",
+    "birthDate": "Jan 13, 1992, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": [
+      {
+        "discount": 0.1,
+        "carId": "37",
+        "carMake": "BMW",
+        "carModel": "F04",
+        "carParts": [
+          {
+            "name": "Fuel filter",
+            "price": 162.99,
+            "quantity": 10
+          },
+          {
+            "name": "Turbocharger",
+            "price": 0.40,
+            "quantity": 10
+          },
+          {
+            "name": "Speed reducer",
+            "price": 14.99,
+            "quantity": 10
+          },
+          {
+            "name": "Water pump pulley",
+            "price": 150.99,
+            "quantity": 10
+          },
+          {
+            "name": "Rear Right Quarter Glass",
+            "price": 100.66,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Yvonne Mccalla",
+    "birthDate": "Aug 2, 1992, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Emmitt Benally",
+    "birthDate": "Nov 20, 1993, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": []
+  },
+  {
+    "name": "Faustina Burgher",
+    "birthDate": "Feb 14, 1994, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": [
+      {
+        "discount": 0.0,
+        "carId": "353",
+        "carMake": "Dacia",
+        "carModel": "Dokker",
+        "carParts": [
+          {
+            "name": "Back Door Outer Door Handle",
+            "price": 43.99,
+            "quantity": 10
+          },
+          {
+            "name": "Front Left Side Inner door handle",
+            "price": 77.99,
+            "quantity": 1032
+          },
+          {
+            "name": "Bonnet/hood",
+            "price": 1001.34,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Nisha Markwell",
+    "birthDate": "Jun 10, 1994, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  },
+  {
+    "name": "Taina Achenbach",
+    "birthDate": "Sep 8, 1994, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": [
+      {
+        "discount": 0.0,
+        "carId": "123",
+        "carMake": "Toyota",
+        "carModel": "Yaris",
+        "carParts": [
+          {
+            "name": "Radiator bolt",
+            "price": 160.99,
+            "quantity": 10
+          },
+          {
+            "name": "Front Right Side Door Glass",
+            "price": 100.91,
+            "quantity": 10
+          },
+          {
+            "name": "Door latch",
+            "price": 2331.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Johnette Derryberry",
+    "birthDate": "Feb 18, 1995, 12:00:00 AM",
+    "isYoungDriver": true,
+    "sales": [
+      {
+        "discount": 0.1,
+        "carId": "4",
+        "carMake": "Opel",
+        "carModel": "Corsa",
+        "carParts": [
+          {
+            "name": "Fuel pressure regulator",
+            "price": 100.99,
+            "quantity": 10
+          },
+          {
+            "name": "Pillar",
+            "price": 100.99,
+            "quantity": 10
+          },
+          {
+            "name": "Rocker cover",
+            "price": 10.99,
+            "quantity": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Daniele Zarate",
+    "birthDate": "Apr 20, 1995, 12:00:00 AM",
+    "isYoungDriver": false,
+    "sales": []
+  }
+]

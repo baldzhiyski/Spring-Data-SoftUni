@@ -27,7 +27,7 @@ public class Car extends BaseEntity {
     @Column(name = "travelled_distance")
     private BigDecimal travelledDistance;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "cars_parts",
             joinColumns = @JoinColumn(name = "car_id"),

@@ -1,10 +1,7 @@
 package bg.softuni.jsonexercisesecondtask.domain.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +26,6 @@ public class Customer  extends  BaseEntity{
     @Column(name = "is_young_driver")
     private Boolean isYoungDriver;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
     private List<Sale> sales;
 }
