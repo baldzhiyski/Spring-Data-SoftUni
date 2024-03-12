@@ -1,0 +1,122 @@
+[
+  {
+    "car": {
+      "id": 219,
+      "make": "Rolls-Royce",
+      "model": "Ghost",
+      "travelledDistance": 214747.00
+    },
+    "customerName": "Garret Capron",
+    "discount": 0.3,
+    "price": 1638.8,
+    "priceWithDiscount": 1147.1599999999999
+  },
+  {
+    "car": {
+      "id": 275,
+      "make": "Peugeot",
+      "model": "407",
+      "travelledDistance": 922036854775807.00
+    },
+    "customerName": "Faustina Burgher",
+    "discount": 0.5,
+    "price": 6339.5,
+    "priceWithDiscount": 3169.75
+  },
+  {
+    "car": {
+      "id": 113,
+      "make": "Toyota",
+      "model": "Corolla",
+      "travelledDistance": 92235807.00
+    },
+    "customerName": "Natalie Poli",
+    "discount": 0.15,
+    "price": 2468.5,
+    "priceWithDiscount": 2098.225
+  },
+  {
+    "car": {
+      "id": 284,
+      "make": "Peugeot",
+      "model": "206",
+      "travelledDistance": 922775807.00
+    },
+    "customerName": "Emmitt Benally",
+    "discount": 0.3,
+    "price": 4152.4,
+    "priceWithDiscount": 2906.6799999999994
+  },
+  {
+    "car": {
+      "id": 30,
+      "make": "BMW",
+      "model": "M6 E63",
+      "travelledDistance": 2147.00
+    },
+    "customerName": "Audrea Cardinal",
+    "discount": 0.5,
+    "price": 2194.1000000000004,
+    "priceWithDiscount": 1097.0500000000002
+  },
+  {
+    "car": {
+      "id": 114,
+      "make": "Toyota",
+      "model": "Prius",
+      "travelledDistance": 21477.00
+    },
+    "customerName": "Audrea Cardinal",
+    "discount": 0.2,
+    "price": 3115.5999999999995,
+    "priceWithDiscount": 2492.4799999999996
+  },
+  {
+    "car": {
+      "id": 347,
+      "make": "Dacia",
+      "model": "Dokker",
+      "travelledDistance": 213647.00
+    },
+    "customerName": "Carole Witman",
+    "discount": 0.05,
+    "price": 1574.7000000000003,
+    "priceWithDiscount": 1495.9650000000001
+  },
+  {
+    "car": {
+      "id": 6,
+      "make": "Opel",
+      "model": "Vectra",
+      "travelledDistance": 9223372854775807.00
+    },
+    "customerName": "Brett Brickley",
+    "discount": 0.2,
+    "price": 347008.95,
+    "priceWithDiscount": 277607.16000000003
+  },
+  {
+    "car": {
+      "id": 134,
+      "make": "Toyota",
+      "model": "Camry Hybrid",
+      "travelledDistance": 2143647.00
+    },
+    "customerName": "Yvonne Mccalla",
+    "discount": 0.3,
+    "price": 4249.700000000001,
+    "priceWithDiscount": 2974.7900000000004
+  },
+  {
+    "car": {
+      "id": 101,
+      "make": "Ford",
+      "model": "Ranger",
+      "travelledDistance": 9223372007.00
+    },
+    "customerName": "Faustina Burgher",
+    "discount": 0.4,
+    "price": 42458.899999999994,
+    "priceWithDiscount": 25475.339999999997
+  }
+]
