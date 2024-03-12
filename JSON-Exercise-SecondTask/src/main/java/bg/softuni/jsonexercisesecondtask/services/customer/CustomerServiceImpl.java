@@ -20,6 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
     private ModelMapper mapper;
 
+
     public CustomerServiceImpl(CustomerRepository customerRepository, ModelMapper mapper) {
         this.customerRepository = customerRepository;
         this.mapper = mapper;
@@ -40,9 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerWthCarsAndMoneyDto> getAllCustomerWithSpentMoney() throws IOException {
-        List<CustomerWthCarsAndMoneyDto> customers = this.customerRepository.findAllByCountOfCars();
+       List<CustomerWthCarsAndMoneyDto> customers = this.customerRepository.findAllByCountOfCars();
 
-        writeJsonOnFile(customers,Path.of(PATH_FIFTH_EX));
+        writeJsonOnFile(customers, Path.of(PATH_FIFTH_EX));
 
         return customers;
     }
