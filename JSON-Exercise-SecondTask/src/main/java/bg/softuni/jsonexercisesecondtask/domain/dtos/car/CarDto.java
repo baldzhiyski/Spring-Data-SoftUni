@@ -9,12 +9,12 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class CarMakeModelDistanceDto {
+@AllArgsConstructor
+public class CarDto {
+    private Long id;
     private String make;
 
     private String model;
-
     private BigDecimal travelledDistance;
 }
