@@ -11,5 +11,5 @@ public interface UserService {
 
     List<UserSoldProductsDto> getAllUsersWith1SoldItemAndActiveBuyer() throws IOException, JAXBException;
 
-    List<UserSoldProductsWithAgeDto> getUsersSummary() throws IOException;
+    List<UserSoldProductsWithAgeDto> getUsersSummary() throws IOException, JAXBException;
 }

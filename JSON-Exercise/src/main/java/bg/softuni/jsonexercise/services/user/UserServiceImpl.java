@@ -48,7 +48,7 @@ public class UserServiceImpl  implements UserService{
     }
 
     @Override
-    public List<UserSoldProductsWithAgeDto> getUsersSummary() throws IOException {
+    public List<UserSoldProductsWithAgeDto> getUsersSummary() throws IOException, JAXBException {
         List<UserSoldProductsWithAgeDto> users = this.userRepository
                 .findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerLastName()
                 .stream()
@@ -68,7 +68,7 @@ public class UserServiceImpl  implements UserService{
         UserWrapperDto wrapperDto = new UserWrapperDto(users);
 
         Utils.writeIntoJsonFile(wrapperDto, Path.of(Paths.PATH_TO_USER_AND_PRODUCTS));
-
+        Utils.writeIntoXmlFile(wrapperDto,Path.of(PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML));
         return users;
     }
     private Set<ProductDto> mapProductsToDto(Set<Product> products) {
