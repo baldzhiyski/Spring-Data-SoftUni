@@ -6,12 +6,14 @@ import bg.softuni.jsonexercise.domain.dtos.product.ProductDto;
 import bg.softuni.jsonexercise.domain.dtos.user.UserModelAbstract;
 import bg.softuni.jsonexercise.domain.dtos.user.UserSoldProductsDto;
 import bg.softuni.jsonexercise.domain.dtos.user.UserSoldProductsWithAgeDto;
+import bg.softuni.jsonexercise.domain.dtos.user.wrapper.UserSoldProductsWrapper;
 import bg.softuni.jsonexercise.domain.dtos.user.wrapper.UserWrapperDto;
 import bg.softuni.jsonexercise.domain.entities.Product;
 import bg.softuni.jsonexercise.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -29,14 +31,17 @@ public class UserServiceImpl  implements UserService{
     }
 
     @Override
-    public List<UserSoldProductsDto> getAllUsersWith1SoldItemAndActiveBuyer() throws IOException {
+    public List<UserSoldProductsDto> getAllUsersWith1SoldItemAndActiveBuyer() throws IOException, JAXBException {
         List<UserSoldProductsDto> users = this.userRepository.findAllBySellingProductsBuyerIsNotNullOrderBySellingProductsBuyerLastName()
                 .stream()
                 .map(user -> mapper.map(user, UserSoldProductsDto.class))
                 .collect(Collectors.toList());
 
-        Utils.writeJsonOnFile(users, Path.of(Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS));
+        UserSoldProductsWrapper userSoldProductsWrapper = new UserSoldProductsWrapper(users);
 
+
+        Utils.writeJsonOnFile(users, Path.of(Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS));
+        Utils.writeIntoXmlFile(userSoldProductsWrapper,Path.of(Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML));
         return  users;
     }
 
