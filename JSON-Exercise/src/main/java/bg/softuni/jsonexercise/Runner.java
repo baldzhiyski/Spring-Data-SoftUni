@@ -25,7 +25,7 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 //        this.userService.getAllUsersWith1SoldItemAndActiveBuyer();
-//        this.categoryService.getCategoriesStatistics();
+       this.userService.getAllUsersWith1SoldItemAndActiveBuyer();
         this.userService.getUsersSummary();
     }
 }

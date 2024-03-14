@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static bg.softuni.jsonexercise.constants.Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML;
+import static bg.softuni.jsonexercise.constants.Paths.PATH_TO_USER_AND_PRODUCTS_XML;
 
 @Service
 public class UserServiceImpl  implements UserService{
@@ -68,7 +69,7 @@ public class UserServiceImpl  implements UserService{
         UserWrapperDto wrapperDto = new UserWrapperDto(users);
 
         Utils.writeIntoJsonFile(wrapperDto, Path.of(Paths.PATH_TO_USER_AND_PRODUCTS));
-        Utils.writeIntoXmlFile(wrapperDto,Path.of(PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML));
+        Utils.writeIntoXmlFile(wrapperDto,Path.of(PATH_TO_USER_AND_PRODUCTS_XML));
         return users;
     }
     private Set<ProductDto> mapProductsToDto(Set<Product> products) {
