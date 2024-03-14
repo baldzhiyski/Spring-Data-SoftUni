@@ -3,6 +3,7 @@ package bg.softuni.jsonexercise.services.seed;
 import bg.softuni.jsonexercise.domain.dtos.category.CategoryDto;
 import bg.softuni.jsonexercise.domain.dtos.product.ProductDto;
 import bg.softuni.jsonexercise.domain.dtos.user.UserDto;
+import bg.softuni.jsonexercise.domain.dtos.user.wrapper.UserDtoWrapper;
 import bg.softuni.jsonexercise.domain.entities.Category;
 import bg.softuni.jsonexercise.domain.entities.Product;
 import bg.softuni.jsonexercise.domain.entities.User;
@@ -14,6 +15,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.math.BigDecimal;
@@ -43,12 +47,23 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedUsers(String type) throws FileNotFoundException {
+    public void seedUsers(String type) throws FileNotFoundException, JAXBException {
         if(this.userRepository.count() == 0) {
-            List<User> users = getUsersFromJson();
+            List<User> users = type.equalsIgnoreCase("Json")?getUsersFromJson():getUserFromXml();
 
             this.userRepository.saveAll(users);
         }
+    }
+
+    private List<User> getUserFromXml() throws FileNotFoundException, JAXBException {
+        FileReader reader = new FileReader(PATH_TO_USERS_XML);
+        Unmarshaller unmarshaller = JAXBContext.newInstance(UserDtoWrapper.class).createUnmarshaller();
+        UserDtoWrapper unmarshalled = (UserDtoWrapper) unmarshaller.unmarshal(reader);
+
+       return unmarshalled.getUsers()
+                .stream()
+                .map(userDto -> mapper.map(userDto,User.class))
+               .collect(Collectors.toList());
     }
 
     private List<User> getUsersFromJson() throws FileNotFoundException {
@@ -72,7 +87,9 @@ public class SeedServiceImpl implements SeedService {
         }
     }
 
-    private List<Product> getProductsFromXml() {
+    private List<Product> getProductsFromXml() throws FileNotFoundException {
+        FileReader reader = new FileReader(PATH_TO_PRODUCTS_XML);
+return  null;
     }
 
     private List<Product> getProductsFromJson() throws FileNotFoundException {

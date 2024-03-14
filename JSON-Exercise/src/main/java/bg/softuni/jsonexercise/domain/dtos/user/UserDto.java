@@ -5,16 +5,25 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.xml.bind.annotation.*;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UserDto {
 
+
+    @XmlAttribute(name = "first-name")
     private String firstName;
 
+    @XmlAttribute(name = "last-name")
     private String lastName;
 
+    @XmlAttribute
     private Integer age;
 
 

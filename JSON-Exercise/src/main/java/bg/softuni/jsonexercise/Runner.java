@@ -24,6 +24,6 @@ public class Runner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.userService.getUsersSummary();
+        this.seedService.seedAll("Xml");
     }
 }
