@@ -2,12 +2,13 @@ package bg.softuni.jsonexercise.services.product;
 
 import bg.softuni.jsonexercise.domain.dtos.product.ProductInRangeDto;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductService {
 
-    List<ProductInRangeDto> getAllInSpecificRange(BigDecimal low,BigDecimal high) throws IOException;
+    List<ProductInRangeDto> getAllInSpecificRange(BigDecimal low,BigDecimal high) throws IOException, JAXBException;
 
 }

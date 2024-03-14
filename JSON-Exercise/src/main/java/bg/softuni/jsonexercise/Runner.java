@@ -7,6 +7,8 @@ import bg.softuni.jsonexercise.services.user.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 public class Runner implements CommandLineRunner {
     private SeedService seedService;
@@ -24,6 +26,8 @@ public class Runner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.seedService.seedAll("Xml");
+        this.productService.getAllInSpecificRange(
+                BigDecimal.valueOf(500)
+                ,BigDecimal.valueOf(1000));
     }
 }
