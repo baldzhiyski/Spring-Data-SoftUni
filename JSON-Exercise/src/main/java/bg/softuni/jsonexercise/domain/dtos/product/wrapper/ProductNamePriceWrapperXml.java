@@ -1,5 +1,6 @@
-package bg.softuni.jsonexercise.domain.dtos.product;
+package bg.softuni.jsonexercise.domain.dtos.product.wrapper;
 
+import bg.softuni.jsonexercise.domain.dtos.product.ProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,18 +10,16 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.math.BigDecimal;
+import java.util.List;
 
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
-@XmlRootElement(name = "product")
+@NoArgsConstructor
+@XmlRootElement(name = "products")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ProductDto {
-    @XmlElement
-    private String name;
+public class ProductNamePriceWrapperXml {
 
-    @XmlElement
-    private BigDecimal price;
+    @XmlElement(name = "product")
+    private List<ProductDto> products;
 }

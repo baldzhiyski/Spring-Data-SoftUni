@@ -1,7 +1,9 @@
 package bg.softuni.jsonexercise.services.seed;
 
 import bg.softuni.jsonexercise.domain.dtos.category.CategoryDto;
+import bg.softuni.jsonexercise.domain.dtos.category.wrapper.CategoryWrapperXml;
 import bg.softuni.jsonexercise.domain.dtos.product.ProductDto;
+import bg.softuni.jsonexercise.domain.dtos.product.wrapper.ProductNamePriceWrapperXml;
 import bg.softuni.jsonexercise.domain.dtos.user.UserDto;
 import bg.softuni.jsonexercise.domain.dtos.user.wrapper.UserDtoWrapper;
 import bg.softuni.jsonexercise.domain.entities.Category;
@@ -76,7 +78,7 @@ public class SeedServiceImpl implements SeedService {
 
     @Override
     @Transactional
-    public void seedProducts(String type) throws FileNotFoundException {
+    public void seedProducts(String type) throws FileNotFoundException, JAXBException {
         if(this.productRepository.count()==0) {
 
             List<Product> products =type.equalsIgnoreCase("Json")? getProductsFromJson():
@@ -87,9 +89,19 @@ public class SeedServiceImpl implements SeedService {
         }
     }
 
-    private List<Product> getProductsFromXml() throws FileNotFoundException {
+    private List<Product> getProductsFromXml() throws FileNotFoundException, JAXBException {
         FileReader reader = new FileReader(PATH_TO_PRODUCTS_XML);
-return  null;
+        JAXBContext jaxbContext = JAXBContext.newInstance(ProductNamePriceWrapperXml.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        ProductNamePriceWrapperXml productWrapper = (ProductNamePriceWrapperXml) unmarshaller.unmarshal(reader);
+
+       return productWrapper.getProducts()
+                .stream()
+                .map(productDto -> mapper.map(productDto, Product.class))
+                .map(this::setRandomSeller)
+                .map(this::setRandomBuyer)
+                .map(this::setRandomCategories)
+                .collect(Collectors.toList());
     }
 
     private List<Product> getProductsFromJson() throws FileNotFoundException {
@@ -144,7 +156,7 @@ return  null;
     }
 
     @Override
-    public void seedCategories(String type) throws FileNotFoundException {
+    public void seedCategories(String type) throws FileNotFoundException, JAXBException {
         if(this.categoryRepository.count()==0){
             List<Category> categories = type.equalsIgnoreCase("Json") ? getCategoriesFromJson() :
                     getCategoriesFromXml();
@@ -153,8 +165,16 @@ return  null;
         }
     }
 
-    private List<Category> getCategoriesFromXml() {
-        return null;
+    private List<Category> getCategoriesFromXml() throws FileNotFoundException, JAXBException {
+        FileReader fileReader = new FileReader(PATH_TO_CATEGORIES_XML);
+
+        Unmarshaller unmarshaller = JAXBContext.newInstance(CategoryWrapperXml.class).createUnmarshaller();
+        CategoryWrapperXml categoryWrapperXml = (CategoryWrapperXml) unmarshaller.unmarshal(fileReader);
+
+        return categoryWrapperXml.getCategories()
+                .stream()
+                .map(categoryDto -> mapper.map(categoryDto,Category.class))
+                .collect(Collectors.toList());
     }
 
     private List<Category> getCategoriesFromJson() throws FileNotFoundException {
