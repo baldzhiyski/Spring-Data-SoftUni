@@ -43,33 +43,54 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedUsers() throws FileNotFoundException {
+    public void seedUsers(String type) throws FileNotFoundException {
         if(this.userRepository.count() == 0) {
             FileReader fileReader = new FileReader(PATH_TO_USERS);
 
-            List<User> users = Arrays.stream(gson.fromJson(fileReader, UserDto[].class))
-                    .map(userDto -> mapper.map(userDto, User.class))
-                    .collect(Collectors.toList());
+            List<User> users = type.equalsIgnoreCase("Json")?getUsersFromJson(fileReader)
+                    :getUsersFromXml();
 
             this.userRepository.saveAll(users);
         }
     }
 
+    private List<User> getUsersFromXml() {
+        return null;
+    }
+
+    private List<User> getUsersFromJson(FileReader fileReader) {
+        List<User> users = Arrays.stream(gson.fromJson(fileReader, UserDto[].class))
+                .map(userDto -> mapper.map(userDto, User.class))
+                .collect(Collectors.toList());
+        return users;
+    }
+
     @Override
     @Transactional
-    public void seedProducts() throws FileNotFoundException {
+    public void seedProducts(String type) throws FileNotFoundException {
         if(this.productRepository.count()==0) {
             FileReader fileReader = new FileReader(PATH_TO_PRODUCTS);
 
-            List<Product> products = Arrays.stream(gson.fromJson(fileReader, ProductDto[].class))
-                    .map(productDto -> mapper.map(productDto, Product.class))
-                    .map(this::setRandomSeller)
-                    .map(this::setRandomBuyer)
-                    .map(this::setRandomCategories)
-                    .collect(Collectors.toList());
+            List<Product> products =type.equalsIgnoreCase("Json")? getProductsFromJson(fileReader):
+            getProductsFromXml(fileReader);
+
 
             this.productRepository.saveAllAndFlush(products);
         }
+    }
+
+    private List<Product> getProductsFromXml(FileReader fileReader) {
+        return null;
+    }
+
+    private List<Product> getProductsFromJson(FileReader fileReader) {
+        List<Product> products = Arrays.stream(gson.fromJson(fileReader, ProductDto[].class))
+                .map(productDto -> mapper.map(productDto, Product.class))
+                .map(this::setRandomSeller)
+                .map(this::setRandomBuyer)
+                .map(this::setRandomCategories)
+                .collect(Collectors.toList());
+        return products;
     }
 
     private Product setRandomSeller(Product product) {
@@ -113,15 +134,27 @@ public class SeedServiceImpl implements SeedService {
     }
 
     @Override
-    public void seedCategories() throws FileNotFoundException {
+    public void seedCategories(String type) throws FileNotFoundException {
         if(this.categoryRepository.count()==0){
             FileReader fileReader = new FileReader(PATH_TO_CATEGORIES);
 
-            List<Category> categories = Arrays.stream(gson.fromJson(fileReader, CategoryDto[].class))
-                    .map(categoryDto -> mapper.map(categoryDto, Category.class))
-                    .collect(Collectors.toList());
+
+
+            List<Category> categories = type.equalsIgnoreCase("Json") ? getCategoriesFromJson(fileReader) :
+                    getCategoriesFromXml(fileReader);
 
             this.categoryRepository.saveAll(categories);
         }
+    }
+
+    private List<Category> getCategoriesFromXml(FileReader fileReader) {
+        return null;
+    }
+
+    private List<Category> getCategoriesFromJson(FileReader fileReader) {
+        List<Category> categories = Arrays.stream(gson.fromJson(fileReader, CategoryDto[].class))
+                .map(categoryDto -> mapper.map(categoryDto, Category.class))
+                .collect(Collectors.toList());
+        return categories;
     }
 }
