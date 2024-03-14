@@ -45,20 +45,14 @@ public class SeedServiceImpl implements SeedService {
     @Override
     public void seedUsers(String type) throws FileNotFoundException {
         if(this.userRepository.count() == 0) {
-            FileReader fileReader = new FileReader(PATH_TO_USERS);
-
-            List<User> users = type.equalsIgnoreCase("Json")?getUsersFromJson(fileReader)
-                    :getUsersFromXml();
+            List<User> users = getUsersFromJson();
 
             this.userRepository.saveAll(users);
         }
     }
 
-    private List<User> getUsersFromXml() {
-        return null;
-    }
-
-    private List<User> getUsersFromJson(FileReader fileReader) {
+    private List<User> getUsersFromJson() throws FileNotFoundException {
+        FileReader fileReader = new FileReader(PATH_TO_USERS);
         List<User> users = Arrays.stream(gson.fromJson(fileReader, UserDto[].class))
                 .map(userDto -> mapper.map(userDto, User.class))
                 .collect(Collectors.toList());
@@ -69,21 +63,20 @@ public class SeedServiceImpl implements SeedService {
     @Transactional
     public void seedProducts(String type) throws FileNotFoundException {
         if(this.productRepository.count()==0) {
-            FileReader fileReader = new FileReader(PATH_TO_PRODUCTS);
 
-            List<Product> products =type.equalsIgnoreCase("Json")? getProductsFromJson(fileReader):
-            getProductsFromXml(fileReader);
+            List<Product> products =type.equalsIgnoreCase("Json")? getProductsFromJson():
+            getProductsFromXml();
 
 
             this.productRepository.saveAllAndFlush(products);
         }
     }
 
-    private List<Product> getProductsFromXml(FileReader fileReader) {
-        return null;
+    private List<Product> getProductsFromXml() {
     }
 
-    private List<Product> getProductsFromJson(FileReader fileReader) {
+    private List<Product> getProductsFromJson() throws FileNotFoundException {
+        FileReader fileReader = new FileReader(PATH_TO_PRODUCTS);
         List<Product> products = Arrays.stream(gson.fromJson(fileReader, ProductDto[].class))
                 .map(productDto -> mapper.map(productDto, Product.class))
                 .map(this::setRandomSeller)
@@ -136,22 +129,19 @@ public class SeedServiceImpl implements SeedService {
     @Override
     public void seedCategories(String type) throws FileNotFoundException {
         if(this.categoryRepository.count()==0){
-            FileReader fileReader = new FileReader(PATH_TO_CATEGORIES);
-
-
-
-            List<Category> categories = type.equalsIgnoreCase("Json") ? getCategoriesFromJson(fileReader) :
-                    getCategoriesFromXml(fileReader);
+            List<Category> categories = type.equalsIgnoreCase("Json") ? getCategoriesFromJson() :
+                    getCategoriesFromXml();
 
             this.categoryRepository.saveAll(categories);
         }
     }
 
-    private List<Category> getCategoriesFromXml(FileReader fileReader) {
+    private List<Category> getCategoriesFromXml() {
         return null;
     }
 
-    private List<Category> getCategoriesFromJson(FileReader fileReader) {
+    private List<Category> getCategoriesFromJson() throws FileNotFoundException {
+        FileReader fileReader = new FileReader(PATH_TO_CATEGORIES);
         List<Category> categories = Arrays.stream(gson.fromJson(fileReader, CategoryDto[].class))
                 .map(categoryDto -> mapper.map(categoryDto, Category.class))
                 .collect(Collectors.toList());
