@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static bg.softuni.jsonexercise.constants.Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML;
+
 @Service
 public class UserServiceImpl  implements UserService{
     private UserRepository userRepository;
@@ -41,7 +43,7 @@ public class UserServiceImpl  implements UserService{
 
 
         Utils.writeJsonOnFile(users, Path.of(Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS));
-        Utils.writeIntoXmlFile(userSoldProductsWrapper,Path.of(Paths.PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML));
+        Utils.writeIntoXmlFile(userSoldProductsWrapper,Path.of(PATH_TO_SUCCESSFULLY_SOLD_PRODUCTS_XML));
         return  users;
     }
 
