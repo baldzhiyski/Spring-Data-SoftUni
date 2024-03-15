@@ -45,29 +45,49 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedSuppliers() throws FileNotFoundException {
+    public void seedSuppliers(String inputType) throws FileNotFoundException {
         if(this.supplierRepository.count()> 0) return;
 
-        FileReader fileReader = new FileReader(PATH_TO_SUPPLIERS_INPUT);
-        List<Supplier> suppliers = Arrays.stream(gson.fromJson(fileReader, SupplierNameImporterDto[].class))
-                .map(supplierNameImporterDto -> mapper.map(supplierNameImporterDto, Supplier.class))
-                .collect(Collectors.toList());
+        List<Supplier> suppliers = inputType.equals("Json") ? getSuppliersFromJson() : getSuppliersFromXml();
+
 
         this.supplierRepository.saveAllAndFlush(suppliers);
     }
 
-    @Override
-    public void seedParts() throws FileNotFoundException {
-        if(this.partsRepository.count()> 0) return;
+    private List<Supplier> getSuppliersFromXml() {
+        // TODO
+        return null;
+    }
 
+    private List<Supplier> getSuppliersFromJson() throws FileNotFoundException {
+        FileReader fileReader = new FileReader(PATH_TO_SUPPLIERS_INPUT);
+        return  Arrays.stream(gson.fromJson(fileReader, SupplierNameImporterDto[].class))
+                .map(supplierNameImporterDto -> mapper.map(supplierNameImporterDto, Supplier.class))
+                .collect(Collectors.toList());
+
+    }
+
+    @Override
+    public void seedParts(String inputType) throws FileNotFoundException {
+        if(this.partsRepository.count()> 0) return;
+        List<Part> parts = inputType.equals("Json") ? getPartsFromJson() : getPartsFromXml();
+
+
+        this.partsRepository.saveAllAndFlush(parts);
+    }
+
+    private List<Part> getPartsFromXml() {
+        // TODO
+        return null;
+    }
+
+    private List<Part> getPartsFromJson() throws FileNotFoundException {
         FileReader fileReader = new FileReader(PATH_TO_PARTS_INPUT);
 
-        List<Part> parts = Arrays.stream(gson.fromJson(fileReader, PartDto[].class))
+        return Arrays.stream(gson.fromJson(fileReader, PartDto[].class))
                 .map(partDto -> mapper.map(partDto, Part.class))
                 .map(this::setRandomSupplier)
                 .collect(Collectors.toList());
-
-        this.partsRepository.saveAllAndFlush(parts);
     }
 
     private Part setRandomSupplier(Part part) {
@@ -80,17 +100,26 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedCars() throws FileNotFoundException {
+    public void seedCars(String inputType) throws FileNotFoundException {
         if(this.carRepository.count() > 0 ) return;
 
+        List<Car> cars = inputType.equals("Json") ? getCarsFromJson() : getCarsFromXml();
+
+        this.carRepository.saveAllAndFlush(cars);
+    }
+
+    private List<Car> getCarsFromXml() {
+        // TODO
+        return null;
+    }
+
+    private List<Car> getCarsFromJson() throws FileNotFoundException {
         FileReader fileReader = new FileReader(PATH_TO_CARS_INPUT);
 
-        List<Car> cars = Arrays.stream(gson.fromJson(fileReader, CarMakeModelDistanceDto[].class))
+        return Arrays.stream(gson.fromJson(fileReader, CarMakeModelDistanceDto[].class))
                 .map(carMakeModelDistanceDto -> mapper.map(carMakeModelDistanceDto, Car.class))
                 .map(this::setBetweenThreeToFiveRandomParts)
                 .collect(Collectors.toList());
-
-        this.carRepository.saveAllAndFlush(cars);
     }
 
     private Car setBetweenThreeToFiveRandomParts(Car car) {
@@ -114,16 +143,26 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedCustomers() throws FileNotFoundException {
+    public void seedCustomers(String inputType) throws FileNotFoundException {
         if(this.customerRepository.count() > 0) return;
 
+        List<Customer> customers = inputType.equals("Json") ? getCustomersFromJson() : getCustomersFromXml();
+
+        this.customerRepository.saveAllAndFlush(customers);
+    }
+
+    private List<Customer> getCustomersFromXml() {
+        //TODO
+        return null;
+    }
+
+    private List<Customer> getCustomersFromJson() throws FileNotFoundException {
         FileReader fileReader = new FileReader(PATH_TO_CUSTOMERS_INPUT);
 
-        List<Customer> customers = Arrays.stream(gson.fromJson(fileReader, CustomerNameBirthDateDriverDto[].class))
+       return Arrays.stream(gson.fromJson(fileReader, CustomerNameBirthDateDriverDto[].class))
                 .map(customerNameBirthDateDriverDto -> mapper.map(customerNameBirthDateDriverDto, Customer.class))
                 .collect(Collectors.toList());
 
-        this.customerRepository.saveAllAndFlush(customers);
     }
 
     @Override
