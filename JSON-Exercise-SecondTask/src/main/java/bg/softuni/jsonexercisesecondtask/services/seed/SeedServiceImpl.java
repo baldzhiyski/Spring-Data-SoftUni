@@ -1,9 +1,13 @@
 package bg.softuni.jsonexercisesecondtask.services.seed;
 
 import bg.softuni.jsonexercisesecondtask.domain.dtos.car.CarMakeModelDistanceDto;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.car.wrapper.CarWrapperDto;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.CustomerNameBirthDateDriverDto;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.wrapper.CustomerWrapper;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.part.PartDto;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.part.wrapper.PartWrapperDto;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.supplier.SupplierNameImporterDto;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.supplier.wrapper.SupplierNameWrapperDto;
 import bg.softuni.jsonexercisesecondtask.domain.entities.*;
 import bg.softuni.jsonexercisesecondtask.repositories.*;
 import com.google.gson.Gson;
@@ -11,6 +15,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -45,7 +53,7 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedSuppliers(String inputType) throws FileNotFoundException {
+    public void seedSuppliers(String inputType) throws FileNotFoundException, JAXBException {
         if(this.supplierRepository.count()> 0) return;
 
         List<Supplier> suppliers = inputType.equals("Json") ? getSuppliersFromJson() : getSuppliersFromXml();
@@ -54,9 +62,16 @@ public class SeedServiceImpl  implements SeedService{
         this.supplierRepository.saveAllAndFlush(suppliers);
     }
 
-    private List<Supplier> getSuppliersFromXml() {
-        // TODO
-        return null;
+    private List<Supplier> getSuppliersFromXml() throws JAXBException {
+        File file = new File(PATH_TO_SUPPLIERS_INPUT_XML);
+        Unmarshaller unmarshaller = JAXBContext.newInstance(SupplierNameWrapperDto.class).createUnmarshaller();
+
+        SupplierNameWrapperDto supplierNameWrapperDto = (SupplierNameWrapperDto) unmarshaller.unmarshal(file);
+
+       return supplierNameWrapperDto.getSuppliers()
+                .stream()
+                .map(supplierNameImporterDto -> mapper.map(supplierNameImporterDto,Supplier.class))
+                .collect(Collectors.toList());
     }
 
     private List<Supplier> getSuppliersFromJson() throws FileNotFoundException {
@@ -68,7 +83,7 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedParts(String inputType) throws FileNotFoundException {
+    public void seedParts(String inputType) throws FileNotFoundException, JAXBException {
         if(this.partsRepository.count()> 0) return;
         List<Part> parts = inputType.equals("Json") ? getPartsFromJson() : getPartsFromXml();
 
@@ -76,10 +91,19 @@ public class SeedServiceImpl  implements SeedService{
         this.partsRepository.saveAllAndFlush(parts);
     }
 
-    private List<Part> getPartsFromXml() {
-        // TODO
-        return null;
+    private List<Part> getPartsFromXml() throws JAXBException {
+        File file = new File(PATH_TO_PARTS_INPUT_XML);
+        Unmarshaller unmarshaller = JAXBContext.newInstance(PartWrapperDto.class).createUnmarshaller();
+
+        PartWrapperDto partWrapperDto = (PartWrapperDto) unmarshaller.unmarshal(file);
+
+      return   partWrapperDto.getPartDtos()
+                .stream()
+                .map(partDto -> mapper.map(partDto, Part.class))
+                .map(this::setRandomSupplier)
+                .collect(Collectors.toList());
     }
+
 
     private List<Part> getPartsFromJson() throws FileNotFoundException {
         FileReader fileReader = new FileReader(PATH_TO_PARTS_INPUT);
@@ -100,7 +124,7 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedCars(String inputType) throws FileNotFoundException {
+    public void seedCars(String inputType) throws FileNotFoundException, JAXBException {
         if(this.carRepository.count() > 0 ) return;
 
         List<Car> cars = inputType.equals("Json") ? getCarsFromJson() : getCarsFromXml();
@@ -108,9 +132,17 @@ public class SeedServiceImpl  implements SeedService{
         this.carRepository.saveAllAndFlush(cars);
     }
 
-    private List<Car> getCarsFromXml() {
-        // TODO
-        return null;
+    private List<Car> getCarsFromXml() throws JAXBException {
+        File file = new File(PATH_TO_CARS_INPUT_XML);
+        Unmarshaller unmarshaller = JAXBContext.newInstance(CarWrapperDto.class).createUnmarshaller();
+
+        CarWrapperDto carWrapperDto = (CarWrapperDto) unmarshaller.unmarshal(file);
+        return carWrapperDto.getCars()
+                .stream()
+                .map(carMakeModelDistanceDto -> mapper.map(carMakeModelDistanceDto, Car.class))
+                .map(this::setBetweenThreeToFiveRandomParts)
+                .collect(Collectors.toList());
+
     }
 
     private List<Car> getCarsFromJson() throws FileNotFoundException {
@@ -143,7 +175,7 @@ public class SeedServiceImpl  implements SeedService{
     }
 
     @Override
-    public void seedCustomers(String inputType) throws FileNotFoundException {
+    public void seedCustomers(String inputType) throws FileNotFoundException, JAXBException {
         if(this.customerRepository.count() > 0) return;
 
         List<Customer> customers = inputType.equals("Json") ? getCustomersFromJson() : getCustomersFromXml();
@@ -151,9 +183,16 @@ public class SeedServiceImpl  implements SeedService{
         this.customerRepository.saveAllAndFlush(customers);
     }
 
-    private List<Customer> getCustomersFromXml() {
-        //TODO
-        return null;
+    private List<Customer> getCustomersFromXml() throws JAXBException {
+        File file = new File(PATH_TO_CUSTOMERS_INPUT_XML);
+        Unmarshaller unmarshaller = JAXBContext.newInstance(CustomerWrapper.class).createUnmarshaller();
+        CustomerWrapper customerWrapper = (CustomerWrapper) unmarshaller.unmarshal(file);
+
+        return customerWrapper.getCustomers()
+                .stream()
+                .map(customerNameBirthDateDriverDto -> mapper.map(customerNameBirthDateDriverDto, Customer.class))
+                .collect(Collectors.toList());
+
     }
 
     private List<Customer> getCustomersFromJson() throws FileNotFoundException {

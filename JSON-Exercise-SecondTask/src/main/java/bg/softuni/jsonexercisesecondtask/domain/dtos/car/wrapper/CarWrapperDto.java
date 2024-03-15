@@ -1,5 +1,6 @@
-package bg.softuni.jsonexercisesecondtask.domain.dtos.car;
+package bg.softuni.jsonexercisesecondtask.domain.dtos.car.wrapper;
 
+import bg.softuni.jsonexercisesecondtask.domain.dtos.car.CarMakeModelDistanceDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,21 +10,16 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "car")
+@XmlRootElement(name = "cars")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class CarMakeModelDistanceDto {
-    @XmlElement
-    private String make;
+public class CarWrapperDto {
 
-    @XmlElement
-    private String model;
-
-    @XmlElement(name = "travelled-distance")
-    private BigDecimal travelledDistance;
+    @XmlElement(name = "car")
+    private List<CarMakeModelDistanceDto> cars;
 }

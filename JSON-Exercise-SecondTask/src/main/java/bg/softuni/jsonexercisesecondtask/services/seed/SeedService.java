@@ -1,19 +1,20 @@
 package bg.softuni.jsonexercisesecondtask.services.seed;
 
+import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
 public interface SeedService {
-    void seedSuppliers(String inputType) throws FileNotFoundException;
+    void seedSuppliers(String inputType) throws FileNotFoundException, JAXBException;
 
-    void seedParts(String inputType) throws FileNotFoundException;
+    void seedParts(String inputType) throws FileNotFoundException, JAXBException;
 
-    void seedCars(String inputType) throws FileNotFoundException;
+    void seedCars(String inputType) throws FileNotFoundException, JAXBException;
 
-    void seedCustomers(String inputType) throws FileNotFoundException;
+    void seedCustomers(String inputType) throws FileNotFoundException, JAXBException;
 
     void seedSalesRecords() throws FileNotFoundException;
 
-    default void seedAllInputIntoDataBase(String inputType) throws FileNotFoundException {
+    default void seedAllInputIntoDataBase(String inputType) throws FileNotFoundException, JAXBException {
         seedSuppliers(inputType);
         seedParts(inputType);
         seedCars(inputType);
