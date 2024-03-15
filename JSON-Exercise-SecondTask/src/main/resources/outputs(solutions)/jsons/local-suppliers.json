@@ -2,32 +2,32 @@
   {
     "id": 2,
     "name": "Agway Inc.",
-    "partsCount": 8
+    "partsCount": 1
   },
   {
     "id": 4,
     "name": "Airgas, Inc.",
-    "partsCount": 4
+    "partsCount": 1
   },
   {
     "id": 7,
     "name": "Caterpillar Inc.",
-    "partsCount": 2
+    "partsCount": 3
   },
   {
     "id": 9,
     "name": "Cintas Corp.",
-    "partsCount": 3
+    "partsCount": 5
   },
   {
     "id": 11,
     "name": "Cintas Corp.",
-    "partsCount": 6
+    "partsCount": 2
   },
   {
     "id": 14,
     "name": "The Clorox Co.",
-    "partsCount": 2
+    "partsCount": 5
   },
   {
     "id": 16,
@@ -42,26 +42,26 @@
   {
     "id": 21,
     "name": "Level 3 Communications Inc.",
-    "partsCount": 1
+    "partsCount": 2
   },
   {
     "id": 23,
     "name": "Nicor Inc",
-    "partsCount": 5
+    "partsCount": 6
   },
   {
     "id": 26,
     "name": "Saks Inc",
-    "partsCount": 4
+    "partsCount": 2
   },
   {
     "id": 29,
     "name": "VF Corporation",
-    "partsCount": 4
+    "partsCount": 6
   },
   {
     "id": 31,
     "name": "Zale",
-    "partsCount": 4
+    "partsCount": 5
   }
 ]
