@@ -7,14 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@XmlRootElement(name = "car")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CarDtoWithParts {
     private Long id;
     private String make;
@@ -22,6 +24,8 @@ public class CarDtoWithParts {
     private String model;
     private BigDecimal travelledDistance;
 
+    @XmlElementWrapper(name = "parts")
+    @XmlElement(name = "part")
     private List<PartDto> parts;
 
     public static CarDtoWithParts fromCar(Car car){

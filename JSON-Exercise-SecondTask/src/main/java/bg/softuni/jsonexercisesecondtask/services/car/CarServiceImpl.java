@@ -4,6 +4,7 @@ import bg.softuni.jsonexercisesecondtask.constants.Paths;
 import bg.softuni.jsonexercisesecondtask.constants.Utils;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.car.CarDto;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.car.CarDtoWithParts;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.car.wrapper.CarWithPartsWrapper;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.car.wrapper.CarWrapperWithIdInfo;
 import bg.softuni.jsonexercisesecondtask.repositories.CarRepository;
 import org.modelmapper.ModelMapper;
@@ -42,13 +43,15 @@ public class CarServiceImpl implements CarService{
     }
 
     @Override
-    public List<CarDtoWithParts> getAllCarsWithInfoForTheParts() throws IOException {
+    public List<CarDtoWithParts> getAllCarsWithInfoForTheParts() throws IOException, JAXBException {
         List<CarDtoWithParts> cars = this.carRepository.findAll()
                 .stream()
                 .map(CarDtoWithParts::fromCar)
                 .collect(Collectors.toList());
 
         Utils.writeJsonOnFile(cars, Path.of(Paths.PATH_FORTH_EX));
+        Utils.writeIntoXmlFile(new CarWithPartsWrapper(cars), Path.of(Paths.PATH_FORTH_EX_XML));
+
 
         return  cars;
     }

@@ -33,8 +33,8 @@ public class Runner implements CommandLineRunner {
 //          seedService.seedAllInputIntoDataBase("Xml");
 //           this.customerService.getAllCustomersOrderByBirthdate();
 //        this.carService.getAllCarsMadeFromToyota("Toyota");
-        this.supplierService.getAllSuppliersNotImportingAbroad();
-//        this.carService.getAllCarsWithInfoForTheParts();
+//        this.supplierService.getAllSuppliersNotImportingAbroad();
+        this.carService.getAllCarsWithInfoForTheParts();
 //        this.customerService.getAllCustomerWithSpentMoney();
 //        this.saleService.getAllSales();
     }

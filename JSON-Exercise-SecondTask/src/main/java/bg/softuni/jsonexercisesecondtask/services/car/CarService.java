@@ -10,5 +10,5 @@ import java.util.List;
 public interface CarService {
     List<CarDto> getAllCarsMadeFromToyota(String make) throws IOException, JAXBException;
 
-    List<CarDtoWithParts> getAllCarsWithInfoForTheParts() throws IOException;
+    List<CarDtoWithParts> getAllCarsWithInfoForTheParts() throws IOException, JAXBException;
 }
