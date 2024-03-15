@@ -7,18 +7,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@XmlRootElement(name = "sale")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SaleFullInfoDto {
-    private CarDto car;
 
+    @XmlElement
+    private CarDto car;
+    @XmlElement(name = "customer-name")
     private String customerName;
 
+    @XmlElement
     private Double discount;
+
+    @XmlElement
     private Double price;
 
+    @XmlElement
     private Double priceWithDiscount;
 
     public  static  SaleFullInfoDto fromSaleToDto(Sale sale){

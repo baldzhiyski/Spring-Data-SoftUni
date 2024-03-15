@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sales>
+    <sale>
+        <car id="209" make="Chevy" model="Caprice" travelled-distance="2147483647.00"/>
+        <customer-name>Rema Revelle</customer-name>
+        <discount>0.3</discount>
+        <price>2239.8</price>
+        <priceWithDiscount>1567.8600000000001</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="68" make="Mercedes" model="W211" travelled-distance="47757.00"/>
+        <customer-name>Hipolito Lamoreaux</customer-name>
+        <discount>0.5</discount>
+        <price>13883.34</price>
+        <priceWithDiscount>6941.67</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="104" make="Toyota" model="Prius" travelled-distance="9223372037.00"/>
+        <customer-name>Faustina Burgher</customer-name>
+        <discount>0.15</discount>
+        <price>2527.3</price>
+        <priceWithDiscount>2148.205</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="161" make="Nissan" model="Altima" travelled-distance="213647.00"/>
+        <customer-name>Jimmy Grossi</customer-name>
+        <discount>0.15</discount>
+        <price>5528.9</price>
+        <priceWithDiscount>4699.565</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="208" make="Chevy" model="Camaro" travelled-distance="2147487.00"/>
+        <customer-name>Yvonne Mccalla</customer-name>
+        <discount>0.2</discount>
+        <price>2119.0</price>
+        <priceWithDiscount>1695.2</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="24" make="BMW" model="E88" travelled-distance="200000.00"/>
+        <customer-name>Faustina Burgher</customer-name>
+        <discount>0.5</discount>
+        <price>24050.5</price>
+        <priceWithDiscount>12025.25</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="60" make="Fiat" model="Freemont" travelled-distance="2147647.00"/>
+        <customer-name>Lino Subia</customer-name>
+        <discount>0.5</discount>
+        <price>5689.099999999999</price>
+        <priceWithDiscount>2844.5499999999997</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="355" make="Dacia" model="Duster" travelled-distance="21447.00"/>
+        <customer-name>Ann Mcenaney</customer-name>
+        <discount>0.5</discount>
+        <price>3112.2999999999997</price>
+        <priceWithDiscount>1556.1499999999999</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="32" make="BMW" model="F04" travelled-distance="2143647.00"/>
+        <customer-name>Louann Holzworth</customer-name>
+        <discount>0.3</discount>
+        <price>4016.3</price>
+        <priceWithDiscount>2811.41</priceWithDiscount>
+    </sale>
+    <sale>
+        <car id="39" make="BMW" model="M6 E63" travelled-distance="214747.00"/>
+        <customer-name>Rico Peer</customer-name>
+        <discount>0.0</discount>
+        <price>2919.7</price>
+        <priceWithDiscount>2919.7</priceWithDiscount>
+    </sale>
+</sales>
