@@ -10,5 +10,5 @@ import java.util.List;
 public interface CustomerService {
     List<CustomerDtoWithSales> getAllCustomersOrderByBirthdate() throws IOException, JAXBException;
 
-    List<CustomerWthCarsAndMoneyDto> getAllCustomerWithSpentMoney() throws IOException;
+    List<CustomerWthCarsAndMoneyDto> getAllCustomerWithSpentMoney() throws IOException, JAXBException;
 }

@@ -4,6 +4,7 @@ import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.CustomerDto;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.CustomerDtoWithSales;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.CustomerWthCarsAndMoneyDto;
 import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.wrapper.CustomerFullInfoWrapper;
+import bg.softuni.jsonexercisesecondtask.domain.dtos.customer.wrapper.CustomerTotalSalesWrapper;
 import bg.softuni.jsonexercisesecondtask.repositories.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -52,10 +53,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerWthCarsAndMoneyDto> getAllCustomerWithSpentMoney() throws IOException {
+    public List<CustomerWthCarsAndMoneyDto> getAllCustomerWithSpentMoney() throws IOException, JAXBException {
        List<CustomerWthCarsAndMoneyDto> customers = this.customerRepository.findAllByCountOfCars();
 
         writeJsonOnFile(customers, Path.of(PATH_FIFTH_EX));
+
+        CustomerTotalSalesWrapper wrapper = new CustomerTotalSalesWrapper(customers);
+
+
+        writeIntoXmlFile(wrapper,Path.of(PATH_FIFTH_EX_XML));
 
         return customers;
     }
