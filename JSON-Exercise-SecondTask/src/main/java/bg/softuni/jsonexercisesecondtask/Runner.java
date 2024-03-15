@@ -30,8 +30,8 @@ public class Runner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-          seedService.seedAllInputIntoDataBase("Xml");
-//        this.customerService.getAllCustomersOrderByBirthdate();
+//          seedService.seedAllInputIntoDataBase("Xml");
+           this.customerService.getAllCustomersOrderByBirthdate();
 //        this.carService.getAllCarsMadeFromToyota("Toyota");
 //        this.supplierService.getAllSuppliersNotImportingAbroad();
 //        this.carService.getAllCarsWithInfoForTheParts();
