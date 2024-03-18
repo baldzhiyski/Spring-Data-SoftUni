@@ -15,6 +15,7 @@
         <module name="Hibernate_Code_First_Lab" />
         <module name="SpringDataDemo" />
         <module name="demo" />
+        <module name="Find-a-Star-Skeleton" />
         <module name="Sales_Database" />
         <module name="book-shop-system-second" />
         <module name="user-system" />
@@ -37,6 +38,7 @@
       <module name="Introduction_Hibernate" target="20" />
       <module name="introhibernate_ex" target="9" />
       <module name="ORM_Fundamentals" target="20" />
+      <module name="skeleton" target="17" />
       <module name="SpringBootDemo" target="20" />
       <module name="SpringDataExercise" target="17" />
       <module name="springintro" target="16" />
@@ -48,6 +50,7 @@
       <module name="Advanced_Querries_Exercise" options="-parameters" />
       <module name="Advanced_Query_Exercise" options="" />
       <module name="Advanced_Query_Lab" options="-parameters" />
+      <module name="Find-a-Star-Skeleton" options="-parameters" />
       <module name="Game_Store_Console_App" options="-parameters" />
       <module name="JSON-Exercise" options="-parameters" />
       <module name="JSON-Exercise-SecondTask" options="-parameters" />
@@ -59,6 +62,7 @@
       <module name="book-shop-system" options="-parameters" />
       <module name="book-shop-system-second" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="skeleton" options="-parameters" />
       <module name="springintro" options="" />
       <module name="user-system" options="-parameters" />
     </option>

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Advanced_Queries_Exercise/Advanced_Queries_Exercise.iml" filepath="$PROJECT_DIR$/Advanced_Queries_Exercise/Advanced_Queries_Exercise.iml" />
       <module fileurl="file://$PROJECT_DIR$/DB Apps Introduction/DB Apps Introduction.iml" filepath="$PROJECT_DIR$/DB Apps Introduction/DB Apps Introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exam_Preparation/Exam_Preparation.iml" filepath="$PROJECT_DIR$/Exam_Preparation/Exam_Preparation.iml" />
       <module fileurl="file://$PROJECT_DIR$/DB Apps Introduction/Exercise/Exercise.iml" filepath="$PROJECT_DIR$/DB Apps Introduction/Exercise/Exercise.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hibernate_CodeFirst_Exercise/Hibernate_CodeFirst_Exercise.iml" filepath="$PROJECT_DIR$/Hibernate_CodeFirst_Exercise/Hibernate_CodeFirst_Exercise.iml" />
       <module fileurl="file://$PROJECT_DIR$/Hibernate_Code_First_Lab.iml" filepath="$PROJECT_DIR$/Hibernate_Code_First_Lab.iml" />

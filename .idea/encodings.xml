@@ -11,6 +11,7 @@
     <file url="file://$PROJECT_DIR$/Advanced_Query_Exercise/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Advanced_Query_Lab/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Advanced_Query_Lab/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Find-a-Star Skeleton/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Game_Store_Console_App/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Game_Store_Console_App/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Hibernate_CodeFirst_Exercise/Bills_Payment_Database/src/main/java" charset="UTF-8" />
@@ -58,5 +59,6 @@
     <file url="file://$PROJECT_DIR$/hibernate_introduction/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/introhibernate_ex/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/introhibernate_ex/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/skeleton/src/main/java" charset="UTF-8" />
   </component>
 </project>
