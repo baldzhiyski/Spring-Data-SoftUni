@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 import softuni.exam.constants.Messages;
 import softuni.exam.constants.Paths;
 import softuni.exam.models.dto.BorrowingRecordDto;
+import softuni.exam.models.dto.RecordDto;
 import softuni.exam.models.dto.wrapper.BorrowingRecordWrapper;
 import softuni.exam.models.entity.Book;
 import softuni.exam.models.entity.BorrowingRecord;
 import softuni.exam.models.entity.LibraryMember;
+import softuni.exam.models.entity.enums.Genre;
 import softuni.exam.repository.BookRepository;
 import softuni.exam.repository.BorrowingRecordRepository;
 import softuni.exam.repository.LibraryMemberRepository;
@@ -21,6 +23,8 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -99,6 +103,16 @@ public class BorrowingRecordsServiceImpl implements BorrowingRecordsService {
 
     @Override
     public String exportBorrowingRecords() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+
+        List<BorrowingRecord> records = this.borrowingRecordRepository
+                .findAllByBook_GenreOrderByBorrowDateDesc(Genre.SCIENCE_FICTION)
+                .stream().collect(Collectors.toList());
+
+        records.stream()
+                .map(record-> this.mapper.map(record, RecordDto.class))
+                .forEach(recordDto -> builder.append(recordDto.toString()).append(System.lineSeparator()));
+
+        return builder.toString();
     }
 }
