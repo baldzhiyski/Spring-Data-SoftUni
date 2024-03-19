@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface LibraryMemberRepository  extends JpaRepository<LibraryMember,Long> {
     Optional<LibraryMember> findFirstByPhoneNumber(String phoneNumber);
+    Optional<LibraryMember>findFirstById(Long id);
+
 }

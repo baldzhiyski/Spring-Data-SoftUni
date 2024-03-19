@@ -14,6 +14,8 @@ public class XmlParserImpl implements XmlParser{
         JAXBContext jaxbContext = JAXBContext.newInstance(tClass);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-        return (T) unmarshaller.unmarshal(new File(filePath));
+        File file = new File(filePath);
+
+        return (T) unmarshaller.unmarshal(file);
     }
 }

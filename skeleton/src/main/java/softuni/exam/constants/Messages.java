@@ -7,4 +7,7 @@ public enum Messages {
 
     public static  final String VALID_MEMBER = "Successfully imported library member %s - %s";
     public static  final String INVALID_MEMBER = "Invalid library member";
+
+    public static  final String VALID_RECORD = "Successfully imported borrowing record %s - %s";
+    public static  final String INVALID_RECORD = "Invalid borrowing record";
 }
