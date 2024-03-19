@@ -2,7 +2,6 @@ package softuni.exam.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.spi.MappingContext;
