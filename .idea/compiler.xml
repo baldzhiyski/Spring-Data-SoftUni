@@ -19,6 +19,7 @@
         <module name="Sales_Database" />
         <module name="book-shop-system-second" />
         <module name="user-system" />
+        <module name="exam" />
         <module name="Json_Lab" />
         <module name="Game_Store_Console_App" />
         <module name="Advanced_Query_Lab" />
@@ -62,6 +63,7 @@
       <module name="book-shop-system" options="-parameters" />
       <module name="book-shop-system-second" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="exam" options="-parameters" />
       <module name="skeleton" options="-parameters" />
       <module name="springintro" options="" />
       <module name="user-system" options="-parameters" />
