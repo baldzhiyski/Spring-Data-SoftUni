@@ -9,4 +9,6 @@ public interface EmployeeService {
     String readEmployeesFromFile() throws IOException;
 
     void importEmployees() throws IOException, JAXBException;
+
+    String exportEmployeesOlderThan25();
 }

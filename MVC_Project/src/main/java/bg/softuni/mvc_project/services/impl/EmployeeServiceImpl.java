@@ -1,7 +1,7 @@
 package bg.softuni.mvc_project.services.impl;
 
-import bg.softuni.mvc_project.constants.Paths;
 import bg.softuni.mvc_project.domain.dtos.EmployeeDto;
+import bg.softuni.mvc_project.domain.dtos.EmployeeDtoBasic;
 import bg.softuni.mvc_project.domain.dtos.wrapper.EmployeeWrapper;
 import bg.softuni.mvc_project.domain.entity.Company;
 import bg.softuni.mvc_project.domain.entity.Employee;
@@ -69,18 +69,18 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .filter(employeeDto -> {
                     boolean isValid = this.validationUtils.isValid(employeeDto);
 
-                    if (this.companyRepository.findFirstByName(employeeDto.getProjectDto().getCompany().getName()).isEmpty()) {
+                    if (this.companyRepository.findFirstByName(employeeDto.getProject().getCompany().getName()).isEmpty()) {
                         isValid = false;
                     }
-                    if (this.projectRepository.findFirstByName(employeeDto.getProjectDto().getName()).isEmpty()) {
+                    if (this.projectRepository.findFirstByName(employeeDto.getProject().getName()).isEmpty()) {
                         isValid = false;
                     }
                     return isValid;
                 })
                 .map(employeeDto -> {
                     Employee employee = this.mapper.map(employeeDto, Employee.class);
-                    Company company = this.companyRepository.findFirstByName(employeeDto.getProjectDto().getCompany().getName()).get();
-                    Project project = this.projectRepository.findFirstByName(employeeDto.getProjectDto().getName()).get();
+                    Company company = this.companyRepository.findFirstByName(employeeDto.getProject().getCompany().getName()).get();
+                    Project project = this.projectRepository.findFirstByName(employeeDto.getProject().getName()).get();
 
                     project.setCompany(company);
                     employee.setProject(project);
@@ -89,5 +89,19 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .collect(Collectors.toSet());
 
         this.employeeRepository.saveAllAndFlush(employees);
+    }
+
+    @Override
+    public String exportEmployeesOlderThan25() {
+        StringBuilder builder = new StringBuilder();
+
+        List<Employee> employees = this.employeeRepository.findAllByAgeGreaterThan(25)
+                .orElseThrow();
+
+        employees.stream()
+                .map(employee -> this.mapper.map(employee, EmployeeDtoBasic.class))
+                .forEach(employeeDto -> builder.append(employeeDto.toString()).append(System.lineSeparator()));
+
+        return builder.toString();
     }
 }

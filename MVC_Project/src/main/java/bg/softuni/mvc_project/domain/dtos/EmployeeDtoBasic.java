@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @AllArgsConstructor
 @XmlRootElement(name = "employee")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class EmployeeDto {
+public class EmployeeDtoBasic {
 
     @XmlElement(name = "first-name")
     @NotNull
@@ -33,7 +33,7 @@ public class EmployeeDto {
 
     @XmlElement(name = "project")
     @NotNull
-    private ProjectDto project;
+    private String projectName;
 
     @Override
     public String toString() {
@@ -41,7 +41,7 @@ public class EmployeeDto {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
-                ", projectDto=" + project.getName() +
+                ", project=" + projectName +
                 '}';
     }
 }
