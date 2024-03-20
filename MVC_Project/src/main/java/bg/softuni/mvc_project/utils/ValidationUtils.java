@@ -1,9 +1,10 @@
 package bg.softuni.mvc_project.utils;
 
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import org.springframework.stereotype.Component;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
+
 
 @Component
 public class ValidationUtils {
