@@ -6,29 +6,30 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Mini_ORM_Project" />
-        <module name="hibernate_introduction" />
-        <module name="JSON-Exercise" />
-        <module name="SoftWeatherForecast" />
+        <module name="MVC_Project" />
         <module name="Hospital_Database" />
-        <module name="JSON-Exercise-SecondTask" />
         <module name="ORM_Workshop_ExtentedVersion" />
         <module name="Hibernate_Code_First_Lab" />
         <module name="SpringDataDemo" />
         <module name="demo" />
         <module name="Find-a-Star-Skeleton" />
-        <module name="Sales_Database" />
         <module name="book-shop-system-second" />
-        <module name="user-system" />
         <module name="Json_Lab" />
         <module name="skeleton" />
         <module name="Game_Store_Console_App" />
-        <module name="Advanced_Query_Lab" />
         <module name="introhibernate_ex" />
-        <module name="Gringotts_Database" />
         <module name="University_System" />
         <module name="FootBall_Betting_Database" />
         <module name="introtohibernate" />
+        <module name="Mini_ORM_Project" />
+        <module name="hibernate_introduction" />
+        <module name="JSON-Exercise" />
+        <module name="SoftWeatherForecast" />
+        <module name="JSON-Exercise-SecondTask" />
+        <module name="Sales_Database" />
+        <module name="user-system" />
+        <module name="Advanced_Query_Lab" />
+        <module name="Gringotts_Database" />
         <module name="book-shop-system" />
       </profile>
     </annotationProcessing>
@@ -56,6 +57,7 @@
       <module name="JSON-Exercise" options="-parameters" />
       <module name="JSON-Exercise-SecondTask" options="-parameters" />
       <module name="Json_Lab" options="-parameters" />
+      <module name="MVC_Project" options="-parameters" />
       <module name="SoftWeatherForecast" options="-parameters" />
       <module name="SpringBootDemo" options="-parameters" />
       <module name="SpringDataDemo" options="-parameters" />
