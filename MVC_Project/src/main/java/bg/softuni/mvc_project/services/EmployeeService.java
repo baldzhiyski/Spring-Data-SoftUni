@@ -1,5 +1,6 @@
 package bg.softuni.mvc_project.services;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 public interface EmployeeService {
@@ -7,5 +8,5 @@ public interface EmployeeService {
 
     String readEmployeesFromFile() throws IOException;
 
-    String importEmployees() throws IOException;
+    void importEmployees() throws IOException, JAXBException;
 }

@@ -34,7 +34,7 @@ public class ImportController {
         boolean employeesImported = this.employeeService.areImported();
         boolean projectsImported = this.projectService.areImported();
 
-        boolean[] importStatuses = { companiesImported, employeesImported, projectsImported };
+        boolean[] importStatuses = { companiesImported, projectsImported, employeesImported };
 
         model.addAttribute("areImported", importStatuses);
 
@@ -68,6 +68,21 @@ public class ImportController {
     @PostMapping("/import/projects")
     public String doImportProjects() throws JAXBException, IOException {
         this.projectService.importProjects();
+
+        return "redirect:/import/xml";
+    }
+    @GetMapping("/import/employees")
+    public String viewImportEmployees(Model model) throws IOException {
+        String emplXML = this.employeeService.readEmployeesFromFile();
+
+        model.addAttribute("employees",emplXML);
+
+        return "xml/import-employees";
+    }
+
+    @PostMapping("/import/employees")
+    public String doImportEmployees() throws JAXBException, IOException {
+        this.employeeService.importEmployees();
 
         return "redirect:/import/xml";
     }
