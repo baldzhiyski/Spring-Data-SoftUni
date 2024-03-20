@@ -1,5 +1,6 @@
 package bg.softuni.mvc_project.services;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 public interface ProjectService {
@@ -7,5 +8,5 @@ public interface ProjectService {
 
     String readProjectsFromFile() throws IOException;
 
-    String importProjects() throws IOException;
+    void importProjects() throws IOException, JAXBException;
 }

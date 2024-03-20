@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static bg.softuni.mvc_project.constants.Paths.PATH_TO_COMPANIES;
@@ -51,11 +52,14 @@ public class CompanyServiceImpl implements CompanyService {
     public void importCompanies() throws IOException, JAXBException {
         List<CompanyDto> companyDtos = this.xmlParser.xmlParse(PATH_TO_COMPANIES, CompanyWrapper.class)
                 .getCompanyDtos()
-                .stream().collect(Collectors.toList());
+                .stream()
+                .toList();
 
-        companyDtos.stream()
+        Set<Company> companies = companyDtos.stream()
                 .filter(companyDto -> this.validationUtils.isValid(companyDto))
                 .map(companyDto -> this.mapper.map(companyDto, Company.class))
-                .forEach(this.companyRepository::saveAndFlush);
+                .collect(Collectors.toSet());
+
+        this.companyRepository.saveAllAndFlush(companies);
     }
 }

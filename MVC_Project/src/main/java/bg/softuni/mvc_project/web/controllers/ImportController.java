@@ -51,9 +51,25 @@ public class ImportController {
     }
 
     @PostMapping("/import/companies")
-    public String doImportCompanies(Model model) throws JAXBException, IOException {
+    public String doImportCompanies() throws JAXBException, IOException {
         this.companyService.importCompanies();
 
         return "redirect:/import/xml";
     }
+    @GetMapping("/import/projects")
+    public String viewImportProject(Model model) throws IOException {
+        String projectsXML = this.projectService.readProjectsFromFile();
+
+        model.addAttribute("projects",projectsXML);
+
+        return "xml/import-projects";
+    }
+
+    @PostMapping("/import/projects")
+    public String doImportProjects() throws JAXBException, IOException {
+        this.projectService.importProjects();
+
+        return "redirect:/import/xml";
+    }
+
 }
