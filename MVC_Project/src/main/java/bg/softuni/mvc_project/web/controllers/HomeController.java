@@ -15,6 +15,14 @@ public class HomeController  extends BaseController{
 
         return modelAndView;
     }
+    @GetMapping("/home")
+    public ModelAndView homeMethod(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("home");
+
+
+        return modelAndView;
+    }
 
 }
 
