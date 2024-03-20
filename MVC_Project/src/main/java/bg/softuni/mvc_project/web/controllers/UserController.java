@@ -66,9 +66,11 @@ public class UserController extends BaseController{
         boolean success = userService.register(registerDTO);
 
         if (success) {
-            return super.redirect("users/login");
+            // Redirect to the login page after successful registration
+            return super.redirect("/users/login");
         }
 
-        return super.redirect("users/register");
+        // Redirect back to the registration page if registration fails
+        return super.redirect("/users/register");
     }
 }

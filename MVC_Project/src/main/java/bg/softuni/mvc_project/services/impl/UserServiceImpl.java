@@ -33,6 +33,10 @@ public class UserServiceImpl implements UserService {
         if (this.userRepository.findFirstByEmail(registerDTO.getEmail()).isPresent()) {
             return false;
         }
+        if(!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())){
+            return false;
+        }
+
         User user = this.mapper.map(registerDTO, User.class);
         this.userRepository.saveAndFlush(user);
 
@@ -48,6 +52,6 @@ public class UserServiceImpl implements UserService {
         }
         if(this.userRepository.findFirstByUsername(registerDTO.getUsername()).isPresent()) return false;
 
-        return false;
+        return true;
     }
 }
