@@ -12,6 +12,11 @@
     <hr class="bg-hero hr-2"/>
     <h1 class="text-center text-black display-4">Register</h1>
     <hr class="bg-hero w-25 hr-2"/>
+    <div th:if="${errors != null and errors.size() > 0}" class="alert alert-danger">
+        <ul>
+            <li th:each="error : ${errors}" th:text="${error}"></li>
+        </ul>
+    </div>
     <form class="mx-auto w-25" th:method="post" th:action="@{/users/register}">
         <input type="hidden" name="_csrf" value="c95ccb2b-1afa-47bd-bf7b-a5b72739470b">
         <div class="form-group">

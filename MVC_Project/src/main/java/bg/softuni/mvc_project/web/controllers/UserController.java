@@ -62,14 +62,26 @@ public class UserController extends BaseController{
     }
 
     @PostMapping("users/register")
-    public ModelAndView registerUser( @Valid UserRegisterDTO registerDTO){
+    public ModelAndView registerUser( @Valid UserRegisterDTO registerDTO,BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            List<String> errors = bindingResult
+                    .getAllErrors()
+                    .stream()
+                    .map(e -> e.getObjectName() + " " + e.getDefaultMessage())
+                    .toList();
+
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("user/register");
+            modelAndView.addObject("errors", errors);
+
+            return modelAndView;
+        }
         boolean success = userService.register(registerDTO);
 
         if (success) {
             // Redirect to the login page after successful registration
             return super.redirect("/users/login");
         }
-
         // Redirect back to the registration page if registration fails
         return super.redirect("/users/register");
     }
