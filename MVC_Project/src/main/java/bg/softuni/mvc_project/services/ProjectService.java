@@ -9,4 +9,6 @@ public interface ProjectService {
     String readProjectsFromFile() throws IOException;
 
     void importProjects() throws IOException, JAXBException;
+
+    String extractProjectFinished() throws JAXBException;
 }

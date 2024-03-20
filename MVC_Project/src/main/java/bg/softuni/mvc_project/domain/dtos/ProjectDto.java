@@ -42,4 +42,16 @@ public class ProjectDto {
     @XmlElement(name = "company")
     @NotNull
     private CompanyDto company;
+
+    @Override
+    public String toString() {
+        return "ProjectDto{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", isFinished=" + isFinished +
+                ", payment=" + payment +
+                ", company=" + company.getName() +
+                '}';
+    }
 }

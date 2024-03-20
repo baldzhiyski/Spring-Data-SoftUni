@@ -1,6 +1,5 @@
 package bg.softuni.mvc_project.services.impl;
 
-import bg.softuni.mvc_project.constants.Paths;
 import bg.softuni.mvc_project.domain.dtos.ProjectDto;
 import bg.softuni.mvc_project.domain.dtos.wrapper.ProjectWrapper;
 import bg.softuni.mvc_project.domain.entity.Company;
@@ -35,6 +34,7 @@ public class ProjectServiceImpl implements ProjectService {
     private XmlParser xmlParser;
 
     private CompanyRepository companyRepository;
+
 
     @Autowired
     public ProjectServiceImpl(ModelMapper mapper, ProjectRepository projectRepository, ValidationUtils validationUtils, XmlParser xmlParser, CompanyRepository companyRepository) {
@@ -79,5 +79,20 @@ public class ProjectServiceImpl implements ProjectService {
                 })
                 .forEach(this.projectRepository::saveAndFlush);
 
+    }
+
+    @Override
+    public String extractProjectFinished() throws JAXBException {
+        StringBuilder builder = new StringBuilder();
+
+        this.projectRepository.findAllByIsFinishedTrue()
+                .orElseThrow()
+                .stream().map(
+                        project -> this.mapper.map(project,ProjectDto.class)
+                )
+                .forEach(projectDto -> builder.append(projectDto.toString())
+                        .append(System.lineSeparator()));
+
+        return builder.toString();
     }
 }
