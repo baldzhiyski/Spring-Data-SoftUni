@@ -1,5 +1,6 @@
 package bg.softuni.mvc_project.services;
 
+import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
 public interface CompanyService {
@@ -7,5 +8,5 @@ public interface CompanyService {
 
     String readCompaniesFromFile() throws IOException;
 
-    String importCompanies() throws IOException;
+    void importCompanies() throws IOException, JAXBException;
 }
