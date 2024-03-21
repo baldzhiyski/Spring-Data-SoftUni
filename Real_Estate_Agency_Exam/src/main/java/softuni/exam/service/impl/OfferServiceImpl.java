@@ -7,10 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 import softuni.exam.constants.Messages;
 import softuni.exam.constants.Paths;
 import softuni.exam.models.dto.OfferDto;
+import softuni.exam.models.dto.OfferInfo;
 import softuni.exam.models.dto.wrapper.OfferWrapper;
 import softuni.exam.models.entity.Agent;
 import softuni.exam.models.entity.Apartment;
 import softuni.exam.models.entity.Offer;
+import softuni.exam.models.entity.enums.ApartmentType;
 import softuni.exam.repository.AgentRepository;
 import softuni.exam.repository.ApartmentRepository;
 import softuni.exam.repository.OfferRepository;
@@ -23,6 +25,7 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -105,6 +108,13 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public String exportOffers() {
-        return null;
+        StringBuilder builder = new StringBuilder() ;
+        List<Offer> offers = this.offerRepository.findAllByApartment_ApartmentTypeOrderByApartment_AreaDescPriceAsc(ApartmentType.three_rooms);
+
+        offers.stream()
+                .map(offer -> mapper.map(offer, OfferInfo.class))
+                .forEach(offerInfo -> builder.append(offerInfo.toString()).append(System.lineSeparator()));
+
+        return builder.toString();
     }
 }
