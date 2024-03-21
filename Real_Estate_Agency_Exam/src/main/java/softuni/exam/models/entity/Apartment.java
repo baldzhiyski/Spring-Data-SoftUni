@@ -23,7 +23,7 @@ public class Apartment extends  BaseEntity{
     @Column(nullable = false)
     private Double area;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "town_id")
     private Town town;
 
