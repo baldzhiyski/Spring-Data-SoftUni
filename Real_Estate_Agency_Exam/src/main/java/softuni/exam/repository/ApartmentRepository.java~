@@ -11,6 +11,4 @@ public interface ApartmentRepository   extends JpaRepository<Apartment,Long> {
 
     Optional<Apartment> findFirstByTown_TownNameAndArea(String townName,Double area);
 
-    Optional<Apartment> findFirstById(Long id);
-
 }

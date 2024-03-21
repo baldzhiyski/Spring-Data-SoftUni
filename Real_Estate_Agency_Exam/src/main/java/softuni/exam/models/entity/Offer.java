@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -28,9 +25,13 @@ public class Offer  extends BaseEntity{
     @Column(name = "published_on",nullable = false)
     private LocalDate publishedOn;
 
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH
+    })
     private Apartment apartment;
 
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH
+    })
     private Agent agent;
 }

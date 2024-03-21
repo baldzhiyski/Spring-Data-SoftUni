@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface AgentRepository  extends JpaRepository<Agent,Long> {
     Optional<Agent> findFirstByEmail(String email);
+
+    Optional<Agent> findFirstByFirstName(String name);
 }
