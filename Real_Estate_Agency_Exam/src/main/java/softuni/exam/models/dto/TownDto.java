@@ -1,36 +1,37 @@
-package softuni.exam.models.entity;
+package softuni.exam.models.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.math.BigDecimal;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "towns")
-public class Town extends BaseEntity {
+public class TownDto {
 
-    @Column(name = "town_name",nullable = false,unique = true)
+    @NotBlank
+    @Length(min = 2)
     private String townName;
 
-    @Column
+    @Positive
+    @NotNull
     private Long population;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Town town = (Town) o;
-        return Objects.equals(townName, town.townName);
+        TownDto townDto = (TownDto) o;
+        return Objects.equals(townName, townDto.townName);
     }
 
     @Override
