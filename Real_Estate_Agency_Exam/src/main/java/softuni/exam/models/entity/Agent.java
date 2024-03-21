@@ -25,7 +25,7 @@ public class Agent extends BaseEntity{
     @Email
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "town_id")
     private Town town;
 }
