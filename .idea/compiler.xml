@@ -26,6 +26,7 @@
         <module name="JSON-Exercise" />
         <module name="SoftWeatherForecast" />
         <module name="JSON-Exercise-SecondTask" />
+        <module name="RealEstate" />
         <module name="Sales_Database" />
         <module name="user-system" />
         <module name="Advanced_Query_Lab" />
@@ -58,6 +59,7 @@
       <module name="JSON-Exercise-SecondTask" options="-parameters" />
       <module name="Json_Lab" options="-parameters" />
       <module name="MVC_Project" options="-parameters" />
+      <module name="RealEstate" options="-parameters" />
       <module name="SoftWeatherForecast" options="-parameters" />
       <module name="SpringBootDemo" options="-parameters" />
       <module name="SpringDataDemo" options="-parameters" />
