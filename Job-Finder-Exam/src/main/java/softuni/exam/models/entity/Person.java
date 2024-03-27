@@ -2,6 +2,7 @@ package softuni.exam.models.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Objects;
 
 @Entity
 @Table(name = "people")
@@ -16,7 +17,7 @@ public class Person extends BaseEntity{
     @Column(unique = true,nullable = false)
     private String email;
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = true)
     private String phone;
 
     @Enumerated(EnumType.STRING)
@@ -85,5 +86,18 @@ public class Person extends BaseEntity{
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(firstName, person.firstName) && Objects.equals(email, person.email) && Objects.equals(phone, person.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, email, phone);
     }
 }
