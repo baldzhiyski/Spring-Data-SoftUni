@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softuni.exam.constants.Paths;
 import softuni.exam.models.dto.JobDto;
+import softuni.exam.models.dto.JobExtractInfoDto;
 import softuni.exam.models.dto.wrapper.JobWrapper;
 import softuni.exam.models.entity.Company;
 import softuni.exam.models.entity.Job;
@@ -18,6 +19,7 @@ import softuni.exam.util.XmlParser;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -87,6 +89,12 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public String getBestJobs() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+
+        List<Job> jobs = this.jobRepository.findAllBySalaryGreaterThanAndHoursAWeekLessThanOrderBySalaryDesc(BigDecimal.valueOf(5000), 30.00);
+        jobs.stream()
+                .map(job -> mapper.map(job, JobExtractInfoDto.class))
+                .forEach(jobExtractInfoDto -> builder.append(jobExtractInfoDto.toString()).append(System.lineSeparator()));
+        return builder.toString();
     }
 }
