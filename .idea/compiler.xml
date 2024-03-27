@@ -19,6 +19,7 @@
         <module name="Game_Store_Console_App" />
         <module name="introhibernate_ex" />
         <module name="University_System" />
+        <module name="JobFinder" />
         <module name="FootBall_Betting_Database" />
         <module name="introtohibernate" />
         <module name="Mini_ORM_Project" />
@@ -57,6 +58,7 @@
       <module name="Game_Store_Console_App" options="-parameters" />
       <module name="JSON-Exercise" options="-parameters" />
       <module name="JSON-Exercise-SecondTask" options="-parameters" />
+      <module name="JobFinder" options="-parameters" />
       <module name="Json_Lab" options="-parameters" />
       <module name="MVC_Project" options="-parameters" />
       <module name="RealEstate" options="-parameters" />
