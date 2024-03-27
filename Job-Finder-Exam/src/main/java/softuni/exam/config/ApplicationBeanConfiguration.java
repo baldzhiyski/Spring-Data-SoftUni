@@ -26,7 +26,7 @@ public class ApplicationBeanConfiguration {
 
                 LocalDate parse = LocalDate
                         .parse(mappingContext.getSource(),
-                                DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
                 return parse;
             }

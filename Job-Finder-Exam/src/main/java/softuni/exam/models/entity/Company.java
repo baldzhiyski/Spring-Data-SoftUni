@@ -24,4 +24,46 @@ public class Company extends BaseEntity{
     @JoinColumn(name = "country_id")
     private Country country;
 
+    public Company() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public LocalDate getDateEstablished() {
+        return dateEstablished;
+    }
+
+    public void setDateEstablished(LocalDate dateEstablished) {
+        this.dateEstablished = dateEstablished;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 }
