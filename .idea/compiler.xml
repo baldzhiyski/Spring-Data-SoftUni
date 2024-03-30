@@ -30,6 +30,7 @@
         <module name="RealEstate" />
         <module name="Sales_Database" />
         <module name="user-system" />
+        <module name="exam" />
         <module name="Advanced_Query_Lab" />
         <module name="Gringotts_Database" />
         <module name="book-shop-system" />
@@ -70,6 +71,7 @@
       <module name="book-shop-system" options="-parameters" />
       <module name="book-shop-system-second" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="exam" options="-parameters" />
       <module name="skeleton" options="-parameters" />
       <module name="springintro" options="" />
       <module name="user-system" options="-parameters" />
